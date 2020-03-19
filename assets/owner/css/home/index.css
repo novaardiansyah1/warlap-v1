@@ -1,6 +1,80 @@
+/* sourcesanspro */
 @font-face {
-  font-family: 'source_sans_proregular';
-  src: url('sourcesanspro-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'sourcesanspro';
+  src: url('../../fonts/source-sans-pro.woff') format('woff');
 }
+
+/* opensanspro */
+@font-face {
+  font-family: 'opensanspro';
+  src: url('../../fonts/opensans-regular.woff') format('woff');
+}
+
+body {
+  font-family: opensanspro;
+  color: #fff;
+}
+
+#navbar {
+  background: linear-gradient(rgba(225,0,0,.7),rgba(225,0,0,.7)),
+  url('../../img/3551288.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#navbarNavAltMarkup {
+  background: rgba(0,0,0,.4);
+  margin-top: 15px;
+  text-align: center;
+}
+
+#navbarNavAltMarkup .nav-link:hover {
+  background: rgba(0,0,0,.5);
+}
+
+/* container */ 
+.kEVnV {
+  position: relative;
+  top: 50vh;
+  transform: translate(0, -50%);
+  text-align: center;
+}
+.QZxoZ {
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 53px;
+}
+.qyzJO {
+  font-size: 25px;
+  line-height: 40px;
+}
+.qyzJO::after {
+  content: '';
+  width: 100px;
+  height: 3px;
+  border-radius: 12px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background: white;
+  display: block;
+}
+
+/* navbar heading */
+.navbar-brand {
+  font-size: 25px;
+  margin: 0 auto;
+}
+
+/* style for dekstop */
+@media (min-width: 576px) 
+{
+  #navbarNavAltMarkup {
+    margin-top: 5px;
+    background: transparent;
+    margin: 0 auto;
+  }
+}
+
