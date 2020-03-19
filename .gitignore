@@ -20,6 +20,7 @@ application/logs/*
 !application/logs/.htaccess
 /application/config/*
 /vendor/
+/user_guide/*
 
 ### CodeIgniter Patch ###
 
