@@ -1,6 +1,6 @@
 <section id="navbar">
   
-<nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
   <div class="container">
   <a class="navbar-brand" href="#">
     <i class="far fa-comments"></i> WARLAP

@@ -68,6 +68,50 @@ body {
   margin: 0 auto;
 }
 
+
+
+/* section about */
+.cRliw {
+  font-size: 35px;
+  font-family: sourcesanspro;
+}
+.tjuLv {
+  width: 85px;
+  height: 3px;
+  border-radius: 12px;
+  background: rgba(225,0,0,.7);
+}
+
+
+/* section amount */
+#amount {
+  background: linear-gradient(rgba(225,0,0,.7),rgba(225,0,0,.7)),
+  url('../../img/3551288.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* section news */
+.card-heading {
+  font-size: 22px;
+}
+
+/* section report */
+#form_lapor label {
+  text-transform: capitalize;
+}
+
+section.stripped {
+  background: #eee;
+}
+
+footer {
+  background: #eee;
+  min-height: 100px;
+  line-height: 100px;
+}
+
 /* style for dekstop */
 @media (min-width: 576px) 
 {

@@ -11,6 +11,10 @@ class Home extends CI_Controller
 	  
 		$this->load->view('home/temp/header', $data);
 		$this->load->view('home/temp/navbar');
+		$this->load->view('home/temp/about');
+		$this->load->view('home/temp/features');
+		$this->load->view('home/temp/amount');
+		$this->load->view('home/temp/news');
 		$this->load->view('home/index');
 		$this->load->view('home/temp/footer');
 	}
