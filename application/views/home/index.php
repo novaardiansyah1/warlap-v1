@@ -10,10 +10,17 @@
   </div>
   <!-- /.row -->
   
+  <?php 
+    $user     = get_user();
+    $username = $user['username'];
+  ?>
+  
   <div class="row text-dark px-2">
     <div class="col-md-8 offset-md-2 mt-5">
       <form action="<?= site_url('lapor') ?>" enctype="multipart/form-data"
       id="form_lapor">
+        <input type="hidden" name="user_id" id="user_id" value="<?= $user['id'] ?>">
+        <!-- /.user_id -->
         <div class="form-group mb-4">
           <label for="kategori">kategori</label>
           <select name="kategori" id="kategori" class="form-control custom-select">
@@ -37,7 +44,6 @@
         </div>
         <!-- /.lampiran -->
         <div class="text-right">
-          <?php $username = $this->session->userdata('username'); ?>
           <!-- tombol kirim laporan -->
           <button type="submit" class="btn btn-md bg-indigo mt-3 px-4 
           btn_kirim_laporan" data-user="<?= $username ?>">

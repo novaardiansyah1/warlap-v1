@@ -36,12 +36,12 @@ class M_auth extends CI_Model {
             redirect('auth'); 
           } else {
             $this->session->set_userdata($data);
-            echo 'true';
+            echo $user['id'];
           }
         }
       } else {
         // jika passwordnya salah
-        echo 'gagal login, password yang anda masukkan salah.'; 
+        echo 'gagal login, password yang anda masukkan salah.';
       }
     } else {
       // jika usernya tidak ada
@@ -53,7 +53,7 @@ class M_auth extends CI_Model {
   {
     $this->session->unset_userdata('username');
     $this->session->unset_userdata('role_id');
-    redirect('home/index#lapor');
+    redirect('home/index#report');
   }
   
 }  

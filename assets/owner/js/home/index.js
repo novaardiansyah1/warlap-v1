@@ -69,8 +69,7 @@ $(document).ready(function(){
         role="status" aria-hidden="true"></span> loading..`);
       },
       success: function(data) {
-        
-        if(data == 'true')
+        if(data > 0)
         {
           $('#modal_login').modal('hide');
           
@@ -79,13 +78,14 @@ $(document).ready(function(){
             html: 'selamat anda berhasil login, silahkan kirimkan laporan anda.', 
             type: 'success'
           });
-          $('.btn_kirim_laporan').data('user','true');
+          $('#user_id').val(data);
+          $('.btn_kirim_laporan').data('user', data);
           $('.tombol_login').html(tombol);
         } else {
           Swal.fire({
             title: '',
             html: data,
-            type: 'error',
+            type: 'error'
           });
           
           $('.tombol_login').html(tombol);
