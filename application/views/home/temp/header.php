@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css?v='.time()) ?>">
   <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css?v='.time()) ?>">
   <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css?v='.time()) ?>">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/owner/css/home/index.css?v='.time()) ?>">
   <title><?= $title ?></title>
 </head>

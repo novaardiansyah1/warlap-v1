@@ -37,9 +37,16 @@
         </div>
         <!-- /.lampiran -->
         <div class="text-right">
+          <?php if(!$this->session->userdata('username')) : ?>
+          <button type="button" class="btn btn-md bg-indigo mt-3 px-4 loading"
+          data-toggle="modal" data-target="#staticBackdrop">
+            <i class="fas fa-paper-plane"></i> Kirim Laporan
+          </button>
+          <?php else : ?>
           <button type="submit" class="btn btn-md bg-indigo mt-3 px-4 loading">
             <i class="fas fa-paper-plane"></i> Kirim Laporan
           </button>
+          <?php endif; ?>
         </div>
       </form>
     </div>
@@ -50,3 +57,63 @@
 <!-- /.container -->
   
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" 
+tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Login Masyarakat
+        </h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark">
+        <p><i class="fas fa-check"></i> untuk mengirimkan laporan anda harus login terlebih dahulu.</p>
+        <form action="<?= site_url('auth') ?>" id="form_login">
+          <div class="input-group mb-3 mt-4">
+            <input type="text" class="form-control" id="username" 
+            placeholder="Username" name="username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-4">
+            <input type="password" class="form-control" id="password" 
+            placeholder="Password" name="password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <i class="fas fa-eye" id="show_hide" data-check="1"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="icheck-primary">
+            <input type="checkbox" id="terms" name="terms" value="">
+            <label for="terms">
+             <small> Saya telah membaca dan menyetujui
+             <a href="#">Syarat dan Ketentuan Layanan</a> </small>
+            </label>
+          </div>
+          
+          <hr>
+          <div class="text-right">
+            <button type="button" class="btn btn-danger px-5 tombol_login">
+              <i class="fas fa-sign-in-alt"></i> login
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card-body -->
+    </div>
+  </div>
+</div>
+
+
+
