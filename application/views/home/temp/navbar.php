@@ -15,22 +15,13 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="#">Home</a>
       <a class="nav-item nav-link" href="#about">Tentang</a>
-      <a class="nav-item nav-link" href="#fitur">Fitur</a>
-      <a class="nav-item nav-link" href="#total">Total</a>
+      <a class="nav-item nav-link" href="#features">Fitur</a>
+      <a class="nav-item nav-link" href="#amount">Total</a>
       <a class="nav-item nav-link" href="#news">Terkini</a>
-      <a class="nav-item nav-link" href="#lapor">Lapor</a>
-      <?php if($this->session->userdata('username')) : ?>
-        <a class="nav-item nav-link" href="<?= site_url('profile') ?>">
-          <i class="fas fa-user"></i> Profile
-        </a>
-        <a class="nav-item nav-link" href="<?= site_url('auth/logout') ?>">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-      <?php else : ?>
-        <a class="nav-item nav-link" href="<?= site_url('auth') ?>">
-          <i class="fas fa-sign-in-alt"></i> Login
-        </a>
-      <?php endif; ?>
+      <a class="nav-item nav-link" href="#report">Lapor</a>
+      <a class="nav-item nav-link profile" href="<?= site_url('member/profile') ?>">
+        <i class="fas fa-user-tie"></i> Profile
+      </a>
     </div>
   </div>
   </div>

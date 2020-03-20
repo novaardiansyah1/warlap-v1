@@ -1,4 +1,4 @@
-<section id="about" class="stripped">
+<section id="features" class="stripped">
   
 <div class="container py-5">
   <div class="row">

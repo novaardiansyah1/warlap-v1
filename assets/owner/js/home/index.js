@@ -56,6 +56,34 @@ $(document).ready(function(){
     }
   });
   
+  // cek terms sudah diceklis belum
+  $('.tombol_login').attr('disabled','true');
+  $('#terms').click(function(){
+    let check = $('#terms').attr('value');
+    if(check == '')
+    {
+      $('.tombol_login').removeAttr('disabled');
+      $('#terms').val(1);
+    } else {
+      $('.tombol_login').attr('disabled','true');
+      $('#terms').val('');
+    }
+  });
+  
+  // cek jika user akses profile
+  $('.nav-link.profile').click(function(e){
+    e.preventDefault();
+    let user = $('.btn_kirim_laporan').data('user');
+    let url = $(this).attr('href');
+    if(user)
+    {
+      $(location).attr('href',url);
+    } else {
+      $('#modal_login').modal('show');
+    }
+  });
+  
+  // login dengan modal
   $('.tombol_login').click(function(){
     let data = $('#form_login').serialize();
     let url  = $('#form_login').attr('action');
@@ -75,7 +103,7 @@ $(document).ready(function(){
           
           Swal.fire({
             title: '',
-            html: 'selamat anda berhasil login, silahkan kirimkan laporan anda.', 
+            html: 'selamat anda berhasil login.', 
             type: 'success'
           });
           $('#user_id').val(data);

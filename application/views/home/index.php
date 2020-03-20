@@ -74,7 +74,8 @@ tabindex="-1" role="dialog" aria-labelledby="modal_loginLabel" aria-hidden="true
         </button>
       </div>
       <div class="modal-body text-dark">
-        <p><i class="fas fa-check"></i> untuk mengirimkan laporan anda harus login terlebih dahulu.</p>
+        <p><i class="fas fa-check"></i> untuk dapat menggunakan layanan kami, 
+        anda diharuskan login terlebih dahulu!</p>
         <form action="<?= site_url('auth') ?>" id="form_login">
           <div class="input-group mb-3 mt-4">
             <input type="text" class="form-control" id="username" 
@@ -104,11 +105,14 @@ tabindex="-1" role="dialog" aria-labelledby="modal_loginLabel" aria-hidden="true
             </label>
           </div>
           
-          <hr>
-          <div class="text-right">
-            <button type="button" class="btn btn-danger px-5 tombol_login">
+          <div class="mt-4">
+            <button type="button" class="btn btn-danger btn-block tombol_login">
               <i class="fas fa-sign-in-alt"></i> login
             </button>
+          </div>
+          <hr>
+          <div class="text-center">
+            <small>belum punya akun? <a href="">daftar</a> sekarang!</small>
           </div>
         </form>
       </div>
