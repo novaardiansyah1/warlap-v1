@@ -37,16 +37,12 @@
         </div>
         <!-- /.lampiran -->
         <div class="text-right">
-          <?php if(!$this->session->userdata('username')) : ?>
-          <button type="button" class="btn btn-md bg-indigo mt-3 px-4 loading"
-          data-toggle="modal" data-target="#staticBackdrop">
+          <?php $username = $this->session->userdata('username'); ?>
+          <!-- tombol kirim laporan -->
+          <button type="submit" class="btn btn-md bg-indigo mt-3 px-4 
+          btn_kirim_laporan" data-user="<?= $username ?>">
             <i class="fas fa-paper-plane"></i> Kirim Laporan
           </button>
-          <?php else : ?>
-          <button type="submit" class="btn btn-md bg-indigo mt-3 px-4 loading">
-            <i class="fas fa-paper-plane"></i> Kirim Laporan
-          </button>
-          <?php endif; ?>
         </div>
       </form>
     </div>
@@ -59,12 +55,12 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" 
-tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modal_login" data-backdrop="static" 
+tabindex="-1" role="dialog" aria-labelledby="modal_loginLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header bg-danger">
-        <h5 class="modal-title" id="staticBackdropLabel">
+        <h5 class="modal-title" id="modal_loginLabel">
           Login Masyarakat
         </h5>
         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">

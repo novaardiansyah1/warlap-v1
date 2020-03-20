@@ -7,12 +7,12 @@ $(document).ready(function(){
     {
       $(this).removeClass('fa-eye');
       $(this).addClass('fa-eye-slash');
-      $('.password').attr('type','text');
+      $('#password').attr('type','text');
       check = $(this).data('check','0');
     } else {
       $(this).removeClass('fa-eye-slash');
       $(this).addClass('fa-eye');
-      $('.password').attr('type','password');
+      $('#password').attr('type','password');
       check = $(this).data('check','1');
     }
   });
@@ -45,12 +45,21 @@ $(document).ready(function(){
     }
   });
   
-  // login 
+  $('.btn_kirim_laporan').click(function(e){
+    e.preventDefault();
+    let user = $(this).data('user');
+    if(user)
+    {
+      
+    } else {
+      $('#modal_login').modal('show');
+    }
+  });
+  
   $('.tombol_login').click(function(){
     let data = $('#form_login').serialize();
-    let url = $('#form_login').attr('action');
-    let tombol = $(this).html();
-    
+    let url  = $('#form_login').attr('action');
+    let tombol = $('.tombol_login').html();
     $.ajax({
       url: url,
       type: 'post',
@@ -59,7 +68,28 @@ $(document).ready(function(){
         $('.tombol_login').html(`<span class="spinner-border spinner-border-sm"
         role="status" aria-hidden="true"></span> loading..`);
       },
-      success: function() {
+      success: function(data) {
+        
+        if(data == 'true')
+        {
+          $('#modal_login').modal('hide');
+          
+          Swal.fire({
+            title: '',
+            html: 'selamat anda berhasil login, silahkan kirimkan laporan anda.', 
+            type: 'success'
+          });
+          $('.btn_kirim_laporan').data('user','true');
+          $('.tombol_login').html(tombol);
+        } else {
+          Swal.fire({
+            title: '',
+            html: data,
+            type: 'error',
+          });
+          
+          $('.tombol_login').html(tombol);
+        }
         
       }
     });
