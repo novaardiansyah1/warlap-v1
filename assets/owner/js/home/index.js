@@ -352,12 +352,35 @@ $('input').each(function(){
   $('.btn_kirim_laporan').click(function(e){
     e.preventDefault();
     let user = $(this).data('user');
+    let data = $('#form_lapor').serialize();
+    let url = base_url + 'lapor';
+    
     if(user)
     {
-      
+      $.ajax({
+        url: url,
+        type: 'post',
+        data: data,
+        success: function(data) {
+          if(data == 'true') {
+            Swal.fire({
+              title: '',
+              html: 'selamat anda berhasil mengirim laporan',
+              type: 'success'
+            });
+          } else {
+            Swal.fire({
+              title: '',
+              html: data,
+              type: 'error'
+            });
+          }
+        }
+      });
     } else {
       $('#modal_login').modal('show');
     }
+    
   });
   
   // cek jika user akses profile

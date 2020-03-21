@@ -19,7 +19,7 @@
   
   <div class="row text-dark px-2">
     <div class="col-md-8 offset-md-2 mt-5">
-      <form action="<?= site_url('lapor') ?>" enctype="multipart/form-data"
+      <form enctype="multipart/form-data"
       id="form_lapor">
         <input type="hidden" name="user_id" id="user_id" value="<?= $user['id'] ?>">
         <!-- /.user_id -->
