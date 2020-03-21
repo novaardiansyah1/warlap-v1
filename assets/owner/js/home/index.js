@@ -8,25 +8,53 @@ $('input').each(function(){
   $(this).attr('autocomplete','off');
 });
 
+// function invalid 
+function invalid(selector) {
+  $(selector).removeClass('is-valid');
+  $(selector).addClass('is-invalid');
+}
 
-// loading 
-let loading = `<span class="spinner-border spinner-border-sm"
-               role="status" aria-hidden="true"></span> loading..`;
-/*========================================================================================================*/  
+// function valid 
+function valid(selector) {
+  $(selector).removeClass('is-invalid');
+  $(selector).addClass('is-valid');
+}
+
+// function show password
+function show_pass(check, selector) {
+  $(check).removeClass('fa-eye');
+  $(check).addClass('fa-eye-slash');
+  $(selector).attr('type','text');
+  check = $(check).data('check','0');
+}
+
+// function hide password
+function hide_pass(check, selector) {
+  $(check).removeClass('fa-eye-slash');
+  $(check).addClass('fa-eye');
+  $(selector).attr('type','password');
+  check = $(check).data('check','1');
+}
+
+// function loading button
+function loading(selector, stop = null) {
+  if(stop == null) {
+    $(selector).html(`<span class="spinner-border spinner-border-sm"
+    role="status" aria-hidden="true"></span> loading..`);
+  } else {
+    $(selector).html(stop);
+  }
+}
+/*===========================================================================*/
   // show / hide password login
   $('#l_show').click(function(){
     let check = $(this).data('check');
+    
     if(check == 1)
     {
-      $(this).removeClass('fa-eye');
-      $(this).addClass('fa-eye-slash');
-      $('#l_password').attr('type','text');
-      check = $(this).data('check','0');
+      show_pass('#l_show','#l_password');
     } else {
-      $(this).removeClass('fa-eye-slash');
-      $(this).addClass('fa-eye');
-      $('#l_password').attr('type','password');
-      check = $(this).data('check','1');
+      hide_pass('#l_show','#l_password');
     }
   });
   
@@ -35,33 +63,27 @@ let loading = `<span class="spinner-border spinner-border-sm"
     let check = $(this).data('check');
     if(check == 1)
     {
-      $(this).removeClass('fa-eye');
-      $(this).addClass('fa-eye-slash');
-      $('#r_password, #r_password1').attr('type','text');
-      check = $(this).data('check','0');
+      show_pass('#r_show','#r_password, #r_password1');
     } else {
-      $(this).removeClass('fa-eye-slash');
-      $(this).addClass('fa-eye');
-      $('#r_password, #r_password1').attr('type','password');
-      check = $(this).data('check','1');
+      hide_pass('#r_show','#r_password, #r_password1');
     }
   });
-/*========================================================================================================*/  
+/*===========================================================================*/
 
 
-/*========================================================================================================*/  
+/*===========================================================================*/
   // login dengan modal
   $('.tombol_login').click(function(){
-    let data = $('#form_login').serialize();
-    let url  = $('#form_login').attr('action');
+    let data   = $('#form_login').serialize();
+    let url    = $('#form_login').attr('action');
     let tombol = $('.tombol_login').html();
+    
     $.ajax({
       url: url,
       type: 'post',
       data: data,
       beforeSend: function() {
-        $('.tombol_login').html(`<span class="spinner-border spinner-border-sm"
-        role="status" aria-hidden="true"></span> loading..`);
+        loading('.tombol_login');
       },
       success: function(data) {
         if(data > 0)
@@ -75,7 +97,8 @@ let loading = `<span class="spinner-border spinner-border-sm"
           });
           $('#user_id').val(data);
           $('.btn_kirim_laporan').data('user', data);
-          $('.tombol_login').html(tombol);
+          
+          loading('.tombol_login', tombol);
         } else {
           Swal.fire({
             title: '',
@@ -83,7 +106,7 @@ let loading = `<span class="spinner-border spinner-border-sm"
             type: 'error'
           });
           
-          $('.tombol_login').html(tombol);
+          loading('.tombol_login', tombol);
         }
         
       }
@@ -105,11 +128,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     
     if(username < 9 || username > 30)
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#l_username');
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#l_username');
     }
   });
   
@@ -119,11 +140,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     
     if(password < 9 || password > 30)
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#l_password')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#l_password')
     }
   });
   
@@ -140,7 +159,7 @@ let loading = `<span class="spinner-border spinner-border-sm"
       $('#terms').val('');
     }
   });
-/*========================================================================================================*/  
+/*===========================================================================*/
 
 
 /*========================================================================================================*/
@@ -153,16 +172,16 @@ let loading = `<span class="spinner-border spinner-border-sm"
   
   // register 
   $('.tombol_register').click(function(){
-    let data = $('#form_register').serialize();
-    let url  = $('#form_register').attr('action');
+    let data   = $('#form_register').serialize();
+    let url    = $('#form_register').attr('action');
     let tombol = $('.tombol_register').html();
+    
     $.ajax({
       url: url,
       type: 'post',
       data: data,
       beforeSend: function() {
-        $('.tombol_register').html(`<span class="spinner-border spinner-border-sm"
-        role="status" aria-hidden="true"></span> loading..`);
+        loading('.tombol_register');
       },
       success: function(data) {
         if(data == 'true')
@@ -175,7 +194,7 @@ let loading = `<span class="spinner-border spinner-border-sm"
             type: 'success'
           });
           
-          $('.tombol_register').html(tombol);
+          loading('.tombol_register', tombol);
         } else {
           Swal.fire({
             title: '',
@@ -183,7 +202,7 @@ let loading = `<span class="spinner-border spinner-border-sm"
             type: 'error'
           });
           
-          $('.tombol_register').html(tombol);
+          loading('.tombol_register', tombol);
         }
         
       }
@@ -198,11 +217,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     
     if(nama < 3 || nama > 120)
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#r_nama')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#r_nama')
     }
   });
   
@@ -314,11 +331,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     
     if(password < 6 || password > 30)
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#r_password')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#r_password')
     }
   });
   
@@ -329,11 +344,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     
     if(password1 != password)
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#r_password1')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#r_password1')
     }
   });
   
@@ -361,11 +374,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     let kategori = $(this).val();
     if(kategori == '') 
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#kategori_id')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#kategori_id')
     }
   });
   
@@ -374,11 +385,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     let judul = $(this).val().length;
     if(judul < 20 || judul > 100 ) 
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#judul')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#judul')
     }
   });
   
@@ -387,11 +396,9 @@ let loading = `<span class="spinner-border spinner-border-sm"
     let laporan = $(this).val().length;
     if(laporan < 50 || laporan > 500 ) 
     {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
+      invalid('#laporan')
     } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
+      valid('#laporan')
     }
   });
 /*========================================================================================================*/
@@ -399,40 +406,43 @@ let loading = `<span class="spinner-border spinner-border-sm"
   // tombol kirim laporan
   $('.btn_kirim_laporan').click(function(e){
     e.preventDefault();
-    let user = $(this).data('user');
-    let data = $('#form_lapor').serialize();
-    let url = base_url + 'lapor';
-    let button = $('.btn_kirim_laporan').html();
+    let user   = $(this).data('user');
+    let data   = $('#form_lapor').serialize();
+    let url    = base_url + 'lapor';
+    let tombol = $('.btn_kirim_laporan').html();
     
     if(user)
     {
-       $.ajax({
-         url: url,
-         type: 'post',
-         data: data,
-         beforeSend: function() {
-           $('.btn_kirim_laporan').html(loading);
-         }, 
-         success: function(data) {
-           $('.btn_kirim_laporan').html(button);
-           if(data == 'true') {
-             Swal.fire({
-               title: '',
-               html: 'laporan/keluhan anda berhasil dikirim.',
-               type: 'success'
-             });
-             setTimeout(function() {
-               $(location).attr('href',base_url+'member');
-             }, 5000);
-           } else {
-             Swal.fire({
-               title: '',
-               html: data,
-               type: 'error'
-             });
-           }
-         }
-       });
+      $.ajax({
+        url: url,
+        type: 'post',
+        data: data,
+        beforeSend: function() {
+          loading('.btn_kirim_laporan');
+        }, 
+        success: function(data) {
+          loading('.btn_kirim_laporan', tombol);
+          
+          if(data == 'true') {
+            Swal.fire({
+              title: '',
+              html: 'laporan/keluhan anda berhasil dikirim.',
+              type: 'success'
+            });
+            setTimeout(function() {
+              $(location).attr('href',base_url+'member');
+            }, 5000);
+          } else {
+            loading('.btn_kirim_laporan', tombol);
+            
+            Swal.fire({
+              title: '',
+              html: data,
+              type: 'error'
+            });
+          }
+        }
+      });
     } else {
       $('#modal_login').modal('show');
     }
