@@ -147,6 +147,45 @@ $('input').each(function(){
     $('#modal_register').modal('show');
   });
   
+  // register 
+  $('.tombol_register').click(function(){
+    let data = $('#form_register').serialize();
+    let url  = $('#form_register').attr('action');
+    let tombol = $('.tombol_register').html();
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: data,
+      beforeSend: function() {
+        $('.tombol_register').html(`<span class="spinner-border spinner-border-sm"
+        role="status" aria-hidden="true"></span> loading..`);
+      },
+      success: function(data) {
+        if(data == 'true')
+        {
+          $('#modal_register').modal('hide');
+          
+          Swal.fire({
+            title: '',
+            html: 'selamat anda berhasil registrasi.', 
+            type: 'success'
+          });
+          
+          $('.tombol_register').html(tombol);
+        } else {
+          Swal.fire({
+            title: '',
+            html: data,
+            type: 'error'
+          });
+          
+          $('.tombol_register').html(tombol);
+        }
+        
+      }
+    });
+  });
+  
   // validasi registrasi
   
   // nama 
@@ -165,16 +204,32 @@ $('input').each(function(){
   
   // username 
   $('#r_username').keyup(function(){
-    let username = $(this).val().length;
+    let username = $(this).val();
+    let data = $('#form_register').serialize();
+    let url = base_url + 'auth/cek_username';
     
-    if(username < 9 || username > 30)
-    {
-      $(this).removeClass('is-valid');
-      $(this).addClass('is-invalid');
-    } else {
-      $(this).removeClass('is-invalid');
-      $(this).addClass('is-valid');
-    }
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: data,
+      success: function(data) {
+        if(data > 0)
+        {
+          $('#r_username').removeClass('is-valid');
+          $('#r_username').addClass('is-invalid');
+        } else {
+          if(username.length < 9 || username.length > 30)
+          {
+            $('#r_username').removeClass('is-valid');
+            $('#r_username').addClass('is-invalid');
+          } else {
+            $('#r_username').removeClass('is-invalid');
+            $('#r_username').addClass('is-valid');
+          }
+        }
+      }
+    });
+    
   });
   
   // email

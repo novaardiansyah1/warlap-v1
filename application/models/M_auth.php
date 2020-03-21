@@ -49,6 +49,44 @@ class M_auth extends CI_Model {
     }
   }
   
+  // register
+  function register()
+  {
+    $nama     = htmlspecialchars($_POST['nama']);
+    $email    = htmlspecialchars($_POST['email']);
+    $username = htmlspecialchars($_POST['username']);
+    $no_telp  = htmlspecialchars($_POST['no_telp']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
+    $data = [
+      'nama'         => $nama,
+      'username'     => $username,
+      'password'     => $password,
+      'bio'          => ' ',
+      'foto'         => 'default.jpg',
+      'email'        => $email,
+      'no_telp'      => $no_telp,
+      'tgl_lahir'    => ' ',
+      'jenkel'       => 1,
+      'no_ktp'       => ' ',
+      'website'      => ' ',
+      'role_id'      => 2,
+      'is_active'    => 1,
+      'date_created' => time()
+    ];
+    
+    $this->db->insert('user', $data);
+    echo('true');
+  }
+  
+  // cek username
+  function cek_username()
+  {
+    $username = $_POST['username'];
+    $cek = $this->db->get_where('user',['username' => $username])->num_rows();
+    echo($cek);
+  }
+  
   // cek email
   function cek_email()
   {

@@ -53,6 +53,12 @@ class Auth extends CI_Controller
     $this->Auth->logout();
   }
   
+  // cek username
+  public function cek_username()
+  {
+    $this->Auth->cek_username();
+  }
+  
   // cek email
   public function cek_email()
   {
