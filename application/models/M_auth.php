@@ -49,10 +49,19 @@ class M_auth extends CI_Model {
     }
   }
   
+  // cek email
   function cek_email()
   {
     $email = $_POST['email'];
     $cek = $this->db->get_where('user',['email' => $email])->num_rows();
+    echo($cek);
+  }
+  
+  // cek no telp
+  function cek_no_telp()
+  {
+    $no_telp = $_POST['no_telp'];
+    $cek = $this->db->get_where('user', ['no_telp' => $no_telp])->num_rows();
     echo($cek);
   }
   

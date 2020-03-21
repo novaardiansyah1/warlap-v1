@@ -172,6 +172,7 @@ let base_url = $('.base_url').data('url');
     }
   });
   
+  // email
   $('#r_email').keyup(function(){
     let data = $('#form_register').serialize();
     let url = base_url + 'auth/cek_email';
@@ -181,9 +182,6 @@ let base_url = $('.base_url').data('url');
       url: url,
       type: 'post',
       data: data,
-      beforeSend: function() {
-        //alert('oke');
-      },
       success: function(data) {
         if(data > 0)
         {
@@ -197,6 +195,36 @@ let base_url = $('.base_url').data('url');
           } else {
             $('#r_email').removeClass('is-invalid');
             $('#r_email').addClass('is-valid');
+          }
+        }
+      }  
+    });
+    
+  });
+  
+  // no. telepon
+  $('#r_no_telp').keyup(function(){
+    let data = $('#form_register').serialize();
+    let url = base_url + 'auth/cek_no_telp';
+    let no_telp = $(this).val().length;
+    
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: data,
+      success: function(data) {
+        if(data > 0)
+        {
+          $('#r_no_telp').removeClass('is-valid');
+          $('#r_no_telp').addClass('is-invalid');
+        } else {
+          if(no_telp < 11 || no_telp > 16)
+          {
+            $('#r_no_telp').removeClass('is-valid');
+            $('#r_no_telp').addClass('is-invalid');
+          } else {
+            $('#r_no_telp').removeClass('is-invalid');
+            $('#r_no_telp').addClass('is-valid');
           }
         }
       }  
