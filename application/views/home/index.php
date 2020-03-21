@@ -1,4 +1,6 @@
 <section id="report">
+
+<div class="base_url" data-url="<?= site_url() ?>"></div>
   
 <div class="container py-5">
   <div class="row">

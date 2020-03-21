@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+// base url
+let base_url = $('.base_url').data('url');
+
 /*========================================================================================================*/  
   // show / hide password login
   $('#l_show').click(function(){
@@ -166,6 +170,38 @@ $(document).ready(function(){
       $(this).removeClass('is-invalid');
       $(this).addClass('is-valid');
     }
+  });
+  
+  $('#r_email').keyup(function(){
+    let data = $('#form_register').serialize();
+    let url = base_url + 'auth/cek_email';
+    let email = $(this).val().length;
+    
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: data,
+      beforeSend: function() {
+        //alert('oke');
+      },
+      success: function(data) {
+        if(data > 0)
+        {
+          $('#r_email').removeClass('is-valid');
+          $('#r_email').addClass('is-invalid');
+        } else {
+          if(email < 6 || email > 60)
+          {
+            $('#r_email').removeClass('is-valid');
+            $('#r_email').addClass('is-invalid');
+          } else {
+            $('#r_email').removeClass('is-invalid');
+            $('#r_email').addClass('is-valid');
+          }
+        }
+      }  
+    });
+    
   });
   
   // password

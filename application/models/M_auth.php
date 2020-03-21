@@ -49,6 +49,13 @@ class M_auth extends CI_Model {
     }
   }
   
+  function cek_email()
+  {
+    $email = $_POST['email'];
+    $cek = $this->db->get_where('user',['email' => $email])->num_rows();
+    echo($cek);
+  }
+  
   function logout()
   {
     $this->session->unset_userdata('username');
