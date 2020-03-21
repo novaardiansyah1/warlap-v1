@@ -24,6 +24,11 @@ yang dibuat menyesuaikan kebutuhan sistem pelayanan pengaduan masyarakat.
 - login multiakses (admin, petugas, member)
 - lupa password
 
+# Info
+maaf di repo ini saya me'ignore folder config bawaan milik Codeigniter 
+yang terdapat di dalam folder application/ . jadi silahkan paste saja 
+config milik kalian masing-masing jika ingin menggunakan repo ini.
+
 # Status
 saat ini masih dalam proses pengerjaan!
 
