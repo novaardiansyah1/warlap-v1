@@ -25,6 +25,29 @@ class Auth extends CI_Controller
     }
   }
   
+  public function register()
+  {
+    $this->form_validation->set_rules('nama','nama lengkap',
+    'required|trim|min_length[3]|max_length[120]');
+    $this->form_validation->set_rules('username','username',
+    'required|trim|min_length[9]|max_length[30]');
+    $this->form_validation->set_rules('email','email',
+    'required|trim|is_unique[user.email]|valid_emails|min_length[6]|max_length[60]');
+    $this->form_validation->set_rules('no_telp','no. telepon',
+    'required|trim|is_unique[user.no_telp]|min_length[10]|numeric');
+    $this->form_validation->set_rules('password','password',
+    'required|trim|matches[password1]|min_length[6]');
+    $this->form_validation->set_rules('password1','password',
+    'required|trim|matches[password]');
+    
+    if($this->form_validation->run() == false)
+    {
+      echo 'gagal registrasi, mohon cek kembali formulir pendaftaran anda.';
+    } else {
+      $this->Auth->register();
+    }
+  }
+  
   public function logout()
   {
     $this->Auth->logout();

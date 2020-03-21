@@ -3,6 +3,11 @@ $(document).ready(function(){
 // base url
 let base_url = $('.base_url').data('url');
 
+// autocomplete off 
+$('input').each(function(){
+  $(this).attr('autocomplete','off');
+});
+
 /*========================================================================================================*/  
   // show / hide password login
   $('#l_show').click(function(){
@@ -176,7 +181,7 @@ let base_url = $('.base_url').data('url');
   $('#r_email').keyup(function(){
     let data = $('#form_register').serialize();
     let url = base_url + 'auth/cek_email';
-    let email = $(this).val().length;
+    let email = $(this).val();
     
     $.ajax({
       url: url,
@@ -188,7 +193,8 @@ let base_url = $('.base_url').data('url');
           $('#r_email').removeClass('is-valid');
           $('#r_email').addClass('is-invalid');
         } else {
-          if(email < 6 || email > 60)
+          if(email.length < 6 || email.length > 60 || !email.
+          match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/))
           {
             $('#r_email').removeClass('is-valid');
             $('#r_email').addClass('is-invalid');
@@ -206,19 +212,19 @@ let base_url = $('.base_url').data('url');
   $('#r_no_telp').keyup(function(){
     let data = $('#form_register').serialize();
     let url = base_url + 'auth/cek_no_telp';
-    let no_telp = $(this).val().length;
+    let no_telp = $(this).val();
     
     $.ajax({
       url: url,
       type: 'post',
       data: data,
       success: function(data) {
-        if(data > 0)
+        if (data > 0)
         {
           $('#r_no_telp').removeClass('is-valid');
           $('#r_no_telp').addClass('is-invalid');
         } else {
-          if(no_telp < 11 || no_telp > 16)
+          if(no_telp.length < 11 || no_telp.length > 16)
           {
             $('#r_no_telp').removeClass('is-valid');
             $('#r_no_telp').addClass('is-invalid');
@@ -229,7 +235,7 @@ let base_url = $('.base_url').data('url');
         }
       }  
     });
-    
+
   });
   
   // password
@@ -247,7 +253,7 @@ let base_url = $('.base_url').data('url');
       $('#r_password1').addClass('is-valid');
     }
     
-    if(password < 9 || password > 30)
+    if(password < 6 || password > 30)
     {
       $(this).removeClass('is-valid');
       $(this).addClass('is-invalid');
