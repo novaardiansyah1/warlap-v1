@@ -21,7 +21,7 @@ application/logs/*
 /application/config/*
 /vendor/
 /user_guide/*
-
+.nomedia
 ### CodeIgniter Patch ###
 
 # End of https://www.gitignore.io/api/codeigniter
