@@ -8,6 +8,10 @@ $('input').each(function(){
   $(this).attr('autocomplete','off');
 });
 
+
+// loading 
+let loading = `<span class="spinner-border spinner-border-sm"
+               role="status" aria-hidden="true"></span> loading..`;
 /*========================================================================================================*/  
   // show / hide password login
   $('#l_show').click(function(){
@@ -348,35 +352,87 @@ $('input').each(function(){
   });
 /*========================================================================================================*/
 
+
+/*========================================================================================================*/
+// validasi form laporan
+  
+  // kategori
+  $('#kategori_id').change(function(){
+    let kategori = $(this).val();
+    if(kategori == '') 
+    {
+      $(this).removeClass('is-valid');
+      $(this).addClass('is-invalid');
+    } else {
+      $(this).removeClass('is-invalid');
+      $(this).addClass('is-valid');
+    }
+  });
+  
+  // judul 
+  $('#judul').keyup(function(){
+    let judul = $(this).val().length;
+    if(judul < 20 || judul > 100 ) 
+    {
+      $(this).removeClass('is-valid');
+      $(this).addClass('is-invalid');
+    } else {
+      $(this).removeClass('is-invalid');
+      $(this).addClass('is-valid');
+    }
+  });
+  
+  // laporan 
+  $('#laporan').keyup(function(){
+    let laporan = $(this).val().length;
+    if(laporan < 50 || laporan > 500 ) 
+    {
+      $(this).removeClass('is-valid');
+      $(this).addClass('is-invalid');
+    } else {
+      $(this).removeClass('is-invalid');
+      $(this).addClass('is-valid');
+    }
+  });
+/*========================================================================================================*/
+
   // tombol kirim laporan
   $('.btn_kirim_laporan').click(function(e){
     e.preventDefault();
     let user = $(this).data('user');
     let data = $('#form_lapor').serialize();
     let url = base_url + 'lapor';
+    let button = $('.btn_kirim_laporan').html();
     
     if(user)
     {
-      $.ajax({
-        url: url,
-        type: 'post',
-        data: data,
-        success: function(data) {
-          if(data == 'true') {
-            Swal.fire({
-              title: '',
-              html: 'selamat anda berhasil mengirim laporan',
-              type: 'success'
-            });
-          } else {
-            Swal.fire({
-              title: '',
-              html: data,
-              type: 'error'
-            });
-          }
-        }
-      });
+       $.ajax({
+         url: url,
+         type: 'post',
+         data: data,
+         beforeSend: function() {
+           $('.btn_kirim_laporan').html(loading);
+         }, 
+         success: function(data) {
+           $('.btn_kirim_laporan').html(button);
+           if(data == 'true') {
+             Swal.fire({
+               title: '',
+               html: 'laporan/keluhan anda berhasil dikirim.',
+               type: 'success'
+             });
+             setTimeout(function() {
+               $(location).attr('href',base_url+'member');
+             }, 5000);
+           } else {
+             Swal.fire({
+               title: '',
+               html: data,
+               type: 'error'
+             });
+           }
+         }
+       });
     } else {
       $('#modal_login').modal('show');
     }

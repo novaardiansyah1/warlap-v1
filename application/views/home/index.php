@@ -24,27 +24,28 @@
         <input type="hidden" name="user_id" id="user_id" value="<?= $user['id'] ?>">
         <!-- /.user_id -->
         <div class="form-group mb-4">
-          <label for="kategori">kategori</label>
-          <select name="kategori" id="kategori" class="form-control custom-select">
+          <label for="kategori_id">kategori <span class="text-danger">*</span></label>
+          <select name="kategori_id" id="kategori_id" class="form-control custom-select">
             <option value="">pilih disini</option>
+            <option value="1">pelayanan umum</option>
           </select>
         </div>
         <!-- /.kategori -->
         <div class="form-group mb-4">
-          <label for="judul">judul</label>
+          <label for="judul">judul <span class="text-danger">*</span></label>
           <input type="text" name="judul" id="judul" class="form-control">
         </div>
         <!-- /.judul -->
         <div class="form-group mb-4">
-          <label for="laporan">laporan</label>
+          <label for="laporan">laporan <span class="text-danger">*</span></label>
           <textarea name="laporan" id="laporan" class="form-control" rows="6"></textarea>
         </div>
         <!-- /.laporan -->
-        <div class="form-group mb-4">
+        <!-- <div class="form-group mb-4">
           <label for="lampiran">Lampiran</label>
           <input type="file" class="form-control-file" name="lampiran" id="lampiran">
         </div>
-        <!-- /.lampiran -->
+         --><!-- /.lampiran -->
         <div class="text-right">
           <!-- tombol kirim laporan -->
           <button type="submit" class="btn btn-md bg-indigo mt-3 px-4 
