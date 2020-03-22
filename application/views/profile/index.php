@@ -148,7 +148,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="nama" name="nama"
                     value="<?= $user['nama'] ?>">
-                    <?= form_error('nama','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                 
@@ -159,7 +158,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="username" name="username"
                     value="<?= $user['username'] ?>" readonly>
-                    <?= form_error('username','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                 
@@ -170,7 +168,6 @@
                   <div class="col-sm-8">
                     <textarea name="bio" id="bio" rows="3" 
                     class="form-control"><?= $user['bio'] ?></textarea>
-                    <?= form_error('bio','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                 
@@ -197,7 +194,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="email" name="email"
                     value="<?= $user['email'] ?>" readonly>
-                    <?= form_error('email','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                   
@@ -208,7 +204,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="no_telp" name="no_telp"
                     value="<?= $user['no_telp'] ?>" readonly>
-                    <?= form_error('no_telp','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                   
@@ -219,7 +214,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir"
                     value="<?= $user['tgl_lahir'] ?>">
-                    <?= form_error('tgl_lahir','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                   
@@ -247,7 +241,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="no_ktp" name="no_ktp"
                     value="<?= $user['no_ktp'] ?>">
-                    <?= form_error('no_ktp','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                     
@@ -258,7 +251,6 @@
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="website" name="website"
                     value="<?= $user['website'] ?>">
-                    <?= form_error('website','<small class="text-danger pl-1">','</small>') ?>
                   </div>
                 </div>
                     

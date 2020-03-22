@@ -12,7 +12,7 @@
   <!-- Main Footer -->
   <footer class="main-footer bg-indigo text-white text-center">
     Copyright &copy; <?= date('Y') ?> <strong>
-      <a href="<?= base_url() ?>" class="text-white">Warlap</a>.</strong>
+      <a href="<?= site_url() ?>" class="text-white" id="base_url">Warlap</a>.</strong>
     All rights reserved.
   </footer>
   
