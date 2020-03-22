@@ -45,6 +45,12 @@ function loading(selector, stop = null) {
     $(selector).html(stop);
   }
 }
+
+// navbar 
+$('a.nav-link').click(function(){
+  $('a.nav-link').removeClass('active');
+  $(this).addClass('active');
+});
 /*===========================================================================*/
   // show / hide password login
   $('#l_show').click(function(){

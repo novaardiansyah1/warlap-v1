@@ -1,0 +1,15 @@
+/* sourcesanspro */
+@font-face {
+  font-family: 'sourcesanspro';
+  src: url('../fonts/source-sans-pro.woff') format('woff');
+}
+
+/* opensanspro */
+@font-face {
+  font-family: 'opensanspro';
+  src: url('../fonts/opensans-regular.woff') format('woff');
+}
+
+body {
+  font-family: sourcesanspro;
+}
