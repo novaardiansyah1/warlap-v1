@@ -8,7 +8,7 @@ class M_auth extends CI_Model {
     $username = htmlspecialchars($this->input->post('username', true));
     $password = htmlspecialchars($this->input->post('password', true));
     
-    $user = $this->db->get_where('user',['username' => $username])->row_array();
+    $user = $this->db->get_where('user', ['username' => $username])->row_array();
     
     if($user)
     {

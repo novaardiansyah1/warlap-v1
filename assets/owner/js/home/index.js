@@ -130,14 +130,22 @@ $('a.nav-link').click(function(){
   
   // username 
   $('#l_username').keyup(function(){
-    let username = $(this).val().length;
-    
-    if(username < 9 || username > 30)
-    {
-      invalid('#l_username');
-    } else {
-      valid('#l_username');
-    }
+    let username = $(this).val();
+    let url = base_url + 'auth/cek_username';
+    let data = $('#form_login').serialize();
+
+    $.ajax({
+      url: url,
+      type: 'post',
+      data: data,
+      success: function(data) {
+        if (data < 1) {
+          invalid('#l_username');
+        } else {
+          valid('#l_username');
+        }
+      }
+    });
   });
   
   // password
@@ -196,11 +204,13 @@ $('a.nav-link').click(function(){
           
           Swal.fire({
             title: '',
-            html: 'selamat anda berhasil registrasi.', 
+            html: 'selamat anda berhasil registrasi, silahkan login.', 
             type: 'success'
           });
           
           loading('.tombol_register', tombol);
+          
+          $('#modal_login').modal('show');
         } else {
           Swal.fire({
             title: '',
@@ -242,16 +252,13 @@ $('a.nav-link').click(function(){
       success: function(data) {
         if(data > 0)
         {
-          $('#r_username').removeClass('is-valid');
-          $('#r_username').addClass('is-invalid');
+          invalid('#r_username');
         } else {
           if(username.length < 9 || username.length > 30)
           {
-            $('#r_username').removeClass('is-valid');
-            $('#r_username').addClass('is-invalid');
+            invalid('#r_username');
           } else {
-            $('#r_username').removeClass('is-invalid');
-            $('#r_username').addClass('is-valid');
+            valid('#r_username');          
           }
         }
       }
@@ -272,17 +279,14 @@ $('a.nav-link').click(function(){
       success: function(data) {
         if(data > 0)
         {
-          $('#r_email').removeClass('is-valid');
-          $('#r_email').addClass('is-invalid');
+          invalid('#r_email');
         } else {
           if(email.length < 6 || email.length > 60 || !email.
           match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/))
           {
-            $('#r_email').removeClass('is-valid');
-            $('#r_email').addClass('is-invalid');
+            invalid('#r_email');
           } else {
-            $('#r_email').removeClass('is-invalid');
-            $('#r_email').addClass('is-valid');
+            valid('#r_email');
           }
         }
       }  
@@ -303,16 +307,13 @@ $('a.nav-link').click(function(){
       success: function(data) {
         if (data > 0)
         {
-          $('#r_no_telp').removeClass('is-valid');
-          $('#r_no_telp').addClass('is-invalid');
+          invalid('#r_no_telp');
         } else {
           if(no_telp.length < 11 || no_telp.length > 16)
           {
-            $('#r_no_telp').removeClass('is-valid');
-            $('#r_no_telp').addClass('is-invalid');
+            invalid('#r_no_telp');
           } else {
-            $('#r_no_telp').removeClass('is-invalid');
-            $('#r_no_telp').addClass('is-valid');
+            valid('#r_no_telp');
           }
         }
       }  
@@ -328,11 +329,9 @@ $('a.nav-link').click(function(){
     
     if(password1 != pass)
     {
-      $('#r_password1').removeClass('is-valid');
-      $('#r_password1').addClass('is-invalid');
+      invalid('#r_password1');
     } else {
-      $('#r_password1').removeClass('is-invalid');
-      $('#r_password1').addClass('is-valid');
+      valid('#r_password1');
     }
     
     if(password < 6 || password > 30)

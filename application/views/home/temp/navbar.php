@@ -19,7 +19,7 @@
       <a class="nav-item nav-link" href="#amount">Total</a>
       <a class="nav-item nav-link" href="#news">Terkini</a>
       <a class="nav-item nav-link" href="#report">Lapor</a>
-      <a class="nav-item nav-link profile" href="<?= site_url('member/profile') ?>">
+      <a class="nav-item nav-link profile" href="<?= site_url('profile') ?>">
         <i class="fas fa-user-tie"></i> Profile
       </a>
     </div>

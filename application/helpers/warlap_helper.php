@@ -47,5 +47,3 @@ function get_breadcrumb($title)
 
 
 
-
-
