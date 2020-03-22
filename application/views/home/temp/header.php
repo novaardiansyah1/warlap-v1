@@ -12,4 +12,4 @@
   <link rel="stylesheet" href="<?= base_url('assets/owner/css/home/index.css?v='.time()) ?>">
   <title><?= $title ?></title>
 </head>
-<body>
+<body id="home">

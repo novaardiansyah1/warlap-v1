@@ -51,6 +51,17 @@ $('a.nav-link').click(function(){
   $('a.nav-link').removeClass('active');
   $(this).addClass('active');
 });
+
+// pesan success
+let pesan = $('.pesan').data('pesan');
+if (pesan) {
+  Swal.fire({
+    title: '',
+    html: pesan,
+    type: 'success'
+  });
+}
+
 /*===========================================================================*/
   // show / hide password login
   $('#l_show').click(function(){
@@ -81,7 +92,7 @@ $('a.nav-link').click(function(){
   // login dengan modal
   $('.tombol_login').click(function(){
     let data   = $('#form_login').serialize();
-    let url    = $('#form_login').attr('action');
+    let url    = base_url + 'auth';
     let tombol = $('.tombol_login').html();
     
     $.ajax({
@@ -435,8 +446,8 @@ $('a.nav-link').click(function(){
               type: 'success'
             });
             setTimeout(function() {
-              $(location).attr('href',base_url+'member');
-            }, 5000);
+              $(location).attr('href',base_url+'profile');
+            }, 2000);
           } else {
             loading('.btn_kirim_laporan', tombol);
             

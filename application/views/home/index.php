@@ -1,6 +1,7 @@
 <section id="report">
 
 <div class="base_url" data-url="<?= site_url() ?>"></div>
+<div class="pesan" data-pesan="<?= $this->session->flashdata('pesan') ?>"></div>
   
 <div class="container py-5">
   <div class="row">
@@ -19,8 +20,7 @@
   
   <div class="row text-dark px-2">
     <div class="col-md-8 offset-md-2 mt-5">
-      <form enctype="multipart/form-data"
-      id="form_lapor">
+      <form id="form_lapor">
         <input type="hidden" name="user_id" id="user_id" value="<?= $user['id'] ?>">
         <!-- /.user_id -->
         <div class="form-group mb-4">
@@ -79,7 +79,7 @@ tabindex="-1" role="dialog" aria-labelledby="modal_loginLabel" aria-hidden="true
       <div class="modal-body text-dark">
         <p><i class="fas fa-check"></i> untuk dapat menggunakan layanan kami, 
         anda diharuskan login terlebih dahulu!</p>
-        <form action="<?= site_url('auth') ?>" id="form_login">
+        <form id="form_login">
           
           <!-- Username --> 
           <div class="input-group mb-3 mt-4">

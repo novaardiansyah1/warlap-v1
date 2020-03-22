@@ -107,9 +107,9 @@ section.stripped {
 }
 
 footer {
-  background: #eee;
-  min-height: 80px;
-  line-height: 80px;
+  min-height: 60px;
+  line-height: 60px;
+  font-size: 14px;
 }
 
 /* style for dekstop */

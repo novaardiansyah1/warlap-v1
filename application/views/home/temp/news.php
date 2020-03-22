@@ -10,7 +10,7 @@
   </div>
   <!-- /.row -->
   
-  <div class="row text-dark px-3">
+  <div class="row text-dark px-2">
     <div class="col-lg-4 mt-5">
       <div class="card shadow">
         <div class="card-body">

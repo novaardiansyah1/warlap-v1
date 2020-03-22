@@ -33,7 +33,12 @@
 <script src="<?= base_url('assets/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <!-- Sweetalert -->
 <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js') ?>"></script>
-<!-- all js -->
+<!-- All -->
 <script src="<?= base_url('assets/owner/js/all.js?v='.time()) ?>"></script>
+<!-- My Script -->
+<?php if(isset($script)) : ?>
+<script src="<?= base_url('assets/owner/js/'.$script.'?v='.time()) ?>"></script>
+<?php endif; ?>
+
 </body>
 </html>

@@ -62,14 +62,14 @@ class M_auth extends CI_Model {
       'nama'         => $nama,
       'username'     => $username,
       'password'     => $password,
-      'bio'          => ' ',
+      'bio'          => '',
       'foto'         => 'default.jpg',
       'email'        => $email,
       'no_telp'      => $no_telp,
-      'tgl_lahir'    => ' ',
+      'tgl_lahir'    => '',
       'jenkel'       => 1,
-      'no_ktp'       => ' ',
-      'website'      => ' ',
+      'no_ktp'       => '',
+      'website'      => '',
       'role_id'      => 2,
       'is_active'    => 1,
       'date_created' => time()
@@ -99,7 +99,7 @@ class M_auth extends CI_Model {
   function cek_no_telp()
   {
     $no_telp = $_POST['no_telp'];
-    $cek = $this->db->get_where('user', ['no_telp' => $no_telp])->num_rows();
+    $cek     = $this->db->get_where('user', ['no_telp' => $no_telp])->num_rows();
     echo($cek);
   }
   
@@ -107,6 +107,7 @@ class M_auth extends CI_Model {
   {
     $this->session->unset_userdata('username');
     $this->session->unset_userdata('role_id');
+    $this->session->set_flashdata('pesan','selamat anda berhasil logout');
     redirect('home/index#report');
   }
   

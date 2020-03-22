@@ -1,5 +1,5 @@
-  <footer class="text-dark text-center">
-    &copy; <a href="<?= base_url() ?>">warlap</a> 2020. All Rights Reserved.
+  <footer class="text-white bg-indigo text-center">
+    &copy; 2020 <a href="#"><b>WARLAP</b>.</a> All Rights Reserved.
   </footer>
   
   <!-- jquery js -->

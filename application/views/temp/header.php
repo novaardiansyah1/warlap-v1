@@ -20,7 +20,7 @@
   
   <!-- My Style -->
   <?php if(isset($style)) : ?>
-  <link rel="stylesheet" href="<?= base_url('assets/owner/css/'.$style) ?>">
+  <link rel="stylesheet" href="<?= base_url('assets/owner/css/'.$style.'?v='.time()) ?>">
   <?php endif; ?>
   
 </head>
