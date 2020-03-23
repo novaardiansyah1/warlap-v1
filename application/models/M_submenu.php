@@ -21,6 +21,14 @@ class M_submenu extends CI_Model
                 ->get()->row_array();
   }
   
+  // validasi
+  function is_submenu()
+  {
+    $submenu = htmlspecialchars($_POST['submenu']);
+    $submenu = $this->db->get_where('submenu',['submenu' => $submenu])->num_rows();
+    echo($submenu);
+  }
+  
   function insert()
   {
     $submenu   = htmlspecialchars($this->input->post('submenu',true));

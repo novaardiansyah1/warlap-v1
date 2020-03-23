@@ -24,9 +24,15 @@ class Submenu extends CI_Controller
     $this->load->view('temp/header', $data);
     $this->load->view('temp/sidebar');
     $this->load->view('temp/topbar');
-    $this->load->view('submenu/modal');
     $this->load->view('submenu/index');
+    $this->load->view('submenu/modal');
     $this->load->view('temp/footer');
+  }
+  
+  public function is_submenu()
+  {
+    $this->cek_ajax();
+    $this->Submenu->is_submenu();
   }
   
   private function cek_ajax()
@@ -34,64 +40,6 @@ class Submenu extends CI_Controller
     if(!isset($_POST['submenu']))
     {
       redirect('submenu');
-    }
-  }
-  
-  public function create_action($where=null)
-  {
-    if($where == null)
-    {
-      $this->_proses('create_view','create_action');
-    } else {
-      $this->_rules();
-      $this->form_validation->set_rules('submenu','submenu',
-      'required|trim|min_length[3]|is_unique[submenu.submenu]');
-      $this->form_validation->set_rules('link', 'link', 
-      'required|trim|is_unique[submenu.link]|min_length[3]');
-      
-      if($this->form_validation->run() == false) {
-        $this->create_view();
-      } else {
-        $this->Submenu->insert();
-        redirect($where);
-      }
-    }
-  }
-  
-  public function update_view($id)
-  {
-    $data = [
-      'title'      => 'kelola submenu',
-      'post_title' => 'kelola submenu sidebar',
-      'submenu'    => $this->Submenu->get_by_id($id),
-      'menu_data'  => $this->Menu->get_all(),
-    ];
-    
-    $this->load->view('temp/header', $data);
-    $this->load->view('temp/sidebar');
-    $this->load->view('temp/topbar');
-    $this->load->view('submenu/update_view');
-    $this->load->view('temp/footer');
-  }
-  
-  public function update_action($id, $where=null)
-  {
-    if($where == null)
-    {
-      $this->_proses('update_view','update_action', $id);
-    } else {
-      $this->_rules();
-      $this->form_validation->set_rules('submenu','submenu',
-      'required|trim|min_length[3]');
-      $this->form_validation->set_rules('link', 'link', 
-      'required|trim|min_length[3]');
-      
-      if($this->form_validation->run() == false) {
-        $this->update_view($id);
-      } else {
-        $this->Submenu->update($id);
-        redirect($where);
-      }
     }
   }
   
@@ -125,10 +73,14 @@ class Submenu extends CI_Controller
   
   private function _rules()
   {
+    $this->form_validation->set_rules('submenu','submenu',
+    'required|trim|min_length[3]|max_length[20]|is_unique[submenu.submenu]');
     $this->form_validation->set_rules('menu_id', 'menu', 
     'required|trim');
+    $this->form_validation->set_rules('link', 'link', 
+    'required|trim|is_unique[submenu.link]|min_length[3]|max_length[120]');
     $this->form_validation->set_rules('icon', 'icon', 
-    'required|trim|min_length[8]');
+    'required|trim|min_length[8]|max_length[30]');
   }
   
   

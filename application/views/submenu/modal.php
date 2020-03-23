@@ -19,7 +19,8 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
           
           <div class="form-group">
             <label for="submenu">submenu <span class="text-danger">*</span></label>
-            <input type="text" name="submenu" id="submenu" class="form-control">
+            <input type="text" name="submenu" id="submenu" class="form-control"
+            value="">
           </div>
             
           <div class="form-group">
