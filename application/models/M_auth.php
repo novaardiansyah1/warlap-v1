@@ -26,7 +26,7 @@ class M_auth extends CI_Model {
         if($user['role_id'] == 1) {
           // jika admin
           $this->session->set_userdata($data);
-          redirect('dashboard');
+          echo 'admin';
         } else {
           // jika member
           if($user['is_active'] == 0) {

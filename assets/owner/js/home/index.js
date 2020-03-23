@@ -117,12 +117,16 @@ if (pesan) {
           
           loading('.tombol_login', tombol);
         } else {
-          Swal.fire({
-            title: '',
-            html: data,
-            type: 'error'
-          });
-          
+          if(data == 'admin')
+          {
+             $(location).attr('href',base_url+'dashboard');
+          } else {
+            Swal.fire({
+              title: '',
+              html: data,
+              type: 'error'
+            });
+          }
           loading('.tombol_login', tombol);
         }
         
