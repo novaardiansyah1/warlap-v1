@@ -27,6 +27,7 @@ class M_submenu extends CI_Model
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+  // tambah submenu
   function create()
   {
     $submenu   = htmlspecialchars($_POST['submenu']);
@@ -46,7 +47,6 @@ class M_submenu extends CI_Model
     echo 'true';
   }
   
-  // validasi create submenu
   function is_submenu()
   {
     $submenu = htmlspecialchars($_POST['submenu']);
@@ -54,7 +54,6 @@ class M_submenu extends CI_Model
     //echo($submenu);
   }
   
-  // validasi create link
   function is_link()
   {
     $link = htmlspecialchars($_POST['link']);

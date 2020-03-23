@@ -51,14 +51,12 @@ class Submenu extends CI_Controller
     }
   }
   
-  // validasi create submenu
   public function is_submenu()
   {
     $this->cek_ajax();
     $this->Submenu->is_submenu();
   }
   
-  // validasi create link
   public function is_link()
   {
     $this->cek_ajax();
