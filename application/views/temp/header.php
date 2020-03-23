@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/adminlte.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <!-- Tempus Dominus -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') ?>">
   <!-- All css -->
   <link rel="stylesheet" href="<?= base_url('assets/owner/css/all.css?v='.time()) ?>">
   

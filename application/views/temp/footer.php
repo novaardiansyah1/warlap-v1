@@ -33,6 +33,10 @@
 <script src="<?= base_url('assets/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <!-- Sweetalert -->
 <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js') ?>"></script>
+<!-- Moment -->
+<script src="<?= base_url('assets/plugins/moment/moment.min.js') ?>"></script>
+<!-- TempusDominus -->
+<script src="<?= base_url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') ?>"></script>
 <!-- All -->
 <script src="<?= base_url('assets/owner/js/all.js?v='.time()) ?>"></script>
 <!-- My Script -->

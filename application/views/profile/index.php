@@ -212,8 +212,10 @@
                     Tanggal Lahir
                   </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir"
-                    value="<?= $user['tgl_lahir'] ?>">
+                    <input type="text" class="form-control datepicker datetimepicker-input" 
+                    data-toggle="datetimepicker" data-target=".datepicker" 
+                    id="tgl_lahir" name="tgl_lahir"
+                    placeholder="<?= $user['tgl_lahir'] ?>">
                   </div>
                 </div>
                   
