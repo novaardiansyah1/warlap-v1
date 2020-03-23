@@ -8,13 +8,13 @@ if(tabel) {
 }
 
 // pesan sweetalert
-let pesan = $('.pesan').data('pesan');
+let pesan = $('.pesan').data('html');
 let type  = $('.pesan').data('type');
 
-if (pesan) {
+if (pesan !== '') {
   Swal.fire({
     title: '',
-    html: pesan,
+    html: html,
     type: type
   });
 }

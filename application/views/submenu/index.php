@@ -1,9 +1,3 @@
-<?php 
-  $html  = $this->session->flashdata('html');
-  $type  = $this->session->flashdata('type');
-?>
-<div class="pesan" data-html="<?= $html ?>" data-type="<?= $type ?>"></div>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
@@ -43,7 +37,7 @@
               </td>
               <td class="mw_200">
                 <a href="<?= site_url('submenu/delete/'.$submenu['id']) ?>" 
-                class="btn btn-sm btn-danger tombol-hapus">
+                class="btn btn-sm btn-danger btn_delete">
                   <i class="fas fa-trash-alt"></i> delete
                 </a>
                 <a href="<?= site_url('submenu/update_view/'.$submenu['id']) ?>" 

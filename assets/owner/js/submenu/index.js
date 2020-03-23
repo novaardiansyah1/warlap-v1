@@ -158,6 +158,39 @@ $('#sub_create').click(function(){
 
 
 
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+$('.btn_delete').click(function(e) {
+  e.preventDefault();
+  // simpan link
+  let href = $(this).attr('href');
+  // tampilkan konfirmasi
+  Swal.fire({
+    title: '',
+    html: 'apakah anda yakin? data akan dihapus permanen!',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'hapus'
+  }).then((result => {
+    if(result.value) {
+      Swal.fire({
+        title: '',
+        html: 'data berhasil dihapus permanen.',
+        type: 'success'
+      });
+      
+      setTimeout(function() {
+        $(location).attr('href', href);
+      }, 2000);
+    }
+  }));
+  
+});
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+
+
+
 
 
 

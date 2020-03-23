@@ -89,8 +89,21 @@ class M_submenu extends CI_Model
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   function delete($id)
   {
-    $this->db->delete('submenu',['id' => $id]);
-    $this->_pesan('submenu berhasil dihapus permanen!','success');
+    $this->db->delete('submenu', ['id' => $id]);
+  }
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+  function _pesan($html,$type)
+  {
+    $data = [
+      'html'  => $html,
+      'type'  => $type
+    ];
+    
+    $this->session->set_flashdata($data);
   }
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   
