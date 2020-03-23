@@ -29,6 +29,9 @@ maaf di repo ini saya me'ignore folder config bawaan milik Codeigniter
 yang terdapat di dalam folder application/ . jadi silahkan paste saja 
 config milik kalian masing-masing jika ingin menggunakan repo ini.
 
+# Demo
+http://warlap.rf.gd/
+
 # Status
 saat ini masih dalam proses pengerjaan!
 
