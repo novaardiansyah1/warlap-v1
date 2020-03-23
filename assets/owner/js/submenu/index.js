@@ -46,7 +46,7 @@ $('#btn_create').click(function(){
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-// validasi create submenu
+// validasi insert submenu
 
 // submenu
 $('#submenu').keyup(function(){
@@ -87,6 +87,7 @@ $('#link').keyup(function(){
   let link = $(this).val();
   let href = url + 'is_link';
   let data = $('#form_create').serialize();
+  
   $.ajax({
     url: href,
     type: 'post',
@@ -114,6 +115,44 @@ $('#icon').keyup(function(){
   } else {
     valid('#icon');
   }
+});
+
+// kirim data
+$('#sub_create').click(function(){
+  let href = url + 'create';
+  let data = $('#form_create').serialize();
+  let tombol = $(this).html();
+  
+  $.ajax({
+    url: href,
+    data: data,
+    type: 'post',
+    beforeSend: function() {
+      loading('#sub_create');
+    },
+    success: function(result) {
+      if(result == 'true') {
+        Swal.fire({
+          title: '',
+          html: 'submenu berhasil ditambahkan.',
+          type: 'success'
+        });
+        
+        setTimeout(function() {
+          $(location).attr('href', href);
+        }, 2000);
+      } else {
+        Swal.fire({
+          title: '',
+          html: 'gagal menambahkan submenu, mohon cek kembali formulir anda.',
+          type: 'error'
+        });
+      }
+      
+      loading('#sub_create', tombol);
+    }
+  });
+  
 });
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 

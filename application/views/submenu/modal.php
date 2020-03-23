@@ -12,7 +12,7 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
         </button>
       </div>
       <div class="modal-body text-dark">
-        <p><i class="fas fa-xs fa-check"></i> Pastikan semua input bertanda 
+        <p><i class="fas fa-xs fa-check"></i> Pastikan semua kolom bertanda 
         <i class="fas fa-xs fa-asterisk text-danger mx-1"></i> diisi dengan
         nilai yang valid! <i class="fas fa-check text-success"></i></p>
         

@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_submenu extends CI_Model
 {
+  
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   // submenu clear
   function get_all() 
   {
@@ -20,6 +22,29 @@ class M_submenu extends CI_Model
                 ->where('submenu.id', $id)
                 ->get()->row_array();
   }
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+  function create()
+  {
+    $submenu   = htmlspecialchars($_POST['submenu']);
+    $menu_id   = htmlspecialchars($_POST['menu_id']);
+    $link      = htmlspecialchars($_POST['link']);
+    $icon      = htmlspecialchars($_POST['icon']);
+    $is_active = htmlspecialchars($_POST['is_active']);
+      
+    $this->db->insert('submenu',[
+      'submenu'   => $submenu,
+      'menu_id'   => $menu_id,
+      'link'      => $link,
+      'icon'      => $icon,
+      'is_active' => $is_active,
+    ]);
+    
+    echo 'true';
+  }
   
   // validasi create submenu
   function is_submenu()
@@ -35,26 +60,11 @@ class M_submenu extends CI_Model
     $link = htmlspecialchars($_POST['link']);
     echo $this->db->get_where('submenu',['link' => $link])->num_rows();
   }
-  
-  function insert()
-  {
-    $submenu   = htmlspecialchars($this->input->post('submenu',true));
-    $menu_id   = htmlspecialchars($this->input->post('menu_id',true));
-    $link      = htmlspecialchars($this->input->post('link',true));
-    $icon      = htmlspecialchars($this->input->post('icon',true));
-    $is_active = htmlspecialchars($this->input->post('is_active',true));
-      
-    $this->db->insert('submenu',[
-      'submenu'   => $submenu,
-      'menu_id'   => $menu_id,
-      'link'      => $link,
-      'icon'      => $icon,
-      'is_active' => $is_active,
-    ]);
-    
-    $this->_pesan('submenu baru berhasil ditambahkan!','success');
-  }
-  
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   function update($id)
   {
     $submenu   = htmlspecialchars($this->input->post('submenu',true));
@@ -73,23 +83,18 @@ class M_submenu extends CI_Model
     
     $this->_pesan('submenu berhasil diperbarui!','success');
   }
-  
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   function delete($id)
   {
     $this->db->delete('submenu',['id' => $id]);
     $this->_pesan('submenu berhasil dihapus permanen!','success');
   }
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   
-  function _pesan($html,$type,$title='')
-  {
-    $data = [
-      'title' => $title,
-      'html'  => $html,
-      'type'  => $type
-    ];
-    
-    $this->session->set_flashdata($data);
-  }
   
   
   
