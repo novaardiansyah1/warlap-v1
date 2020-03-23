@@ -66,7 +66,7 @@
     <div class="col-lg-4 mt-3">
       <div class="card shadow">
         <div class="card-body">
-          <h1 class="card-heading">preman selalu berulah, pedangang jadi korban.</h1>
+          <h1 class="card-heading">preman selalu berulah, pedagang jadi korban.</h1>
           <div class="badge badge-danger mt-2">Pelayanan Umum</div> |
           <div class="badge badge-primary">Selesai</div>
           <p class="card-deskripsi mt-3">
