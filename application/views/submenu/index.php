@@ -1,21 +1,18 @@
 <?php 
-  $title = $this->session->flashdata('title');
   $html  = $this->session->flashdata('html');
   $type  = $this->session->flashdata('type');
 ?>
-<div class="pesan" data-title="<?= $title ?>" data-html="<?= $html ?>"
-data-type="<?= $type ?>"></div>
+<div class="pesan" data-html="<?= $html ?>" data-type="<?= $type ?>"></div>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8 offset-lg-2">
       
-      <a href="<?= site_url('submenu/create_view') ?>" 
-      class="btn btn-sm bg-indigo">
-        <i class="fas fa-pencil-alt"></i> create a new
-      </a>
+      <button class="btn btn-md bg-indigo" id="btn_create">
+        <i class="fas fa-pencil-alt"></i> tambah submenu
+      </button>
       
-      <div class="table-responsive mt-3">
+      <div class="table-responsive mt-4">
         <table class="table table-bordered table-hover"
         id="tabel">
           <thead class="text-center text-white bg-secondary">

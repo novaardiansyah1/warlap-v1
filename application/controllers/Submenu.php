@@ -9,7 +9,6 @@ class Submenu extends CI_Controller
     parent::__construct();
     $this->load->model('M_submenu', 'Submenu');
     $this->load->model('M_menu', 'Menu');
-    cek_login();
   }
   
   public function index()
@@ -18,28 +17,24 @@ class Submenu extends CI_Controller
       'title'        => 'kelola submenu',
       'post_title'   => 'kelola submenu sidebar',
       'submenu_data' => $this->Submenu->get_all(),
+      'menu_data'    => $this->Menu->get_all(),
+      'script'       => 'submenu/index.js'
     ];
     
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar');
+    $this->load->view('temp/header', $data);
+    $this->load->view('temp/sidebar');
+    $this->load->view('temp/topbar');
+    $this->load->view('submenu/modal');
     $this->load->view('submenu/index');
-    $this->load->view('templates/footer');
+    $this->load->view('temp/footer');
   }
   
-  public function create_view()
+  private function cek_ajax()
   {
-    $data = [
-      'title'      => 'kelola submenu',
-      'post_title' => 'kelola submenu sidebar',
-      'menu_data'  => $this->Menu->get_all(),
-    ];
-    
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar');
-    $this->load->view('submenu/create_view');
-    $this->load->view('templates/footer');
+    if(!isset($_POST['submenu']))
+    {
+      redirect('submenu');
+    }
   }
   
   public function create_action($where=null)
@@ -72,11 +67,11 @@ class Submenu extends CI_Controller
       'menu_data'  => $this->Menu->get_all(),
     ];
     
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar');
+    $this->load->view('temp/header', $data);
+    $this->load->view('temp/sidebar');
+    $this->load->view('temp/topbar');
     $this->load->view('submenu/update_view');
-    $this->load->view('templates/footer');
+    $this->load->view('temp/footer');
   }
   
   public function update_action($id, $where=null)
