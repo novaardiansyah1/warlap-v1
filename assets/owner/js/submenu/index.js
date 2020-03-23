@@ -51,8 +51,8 @@ $('#btn_create').click(function(){
 // submenu
 $('#submenu').keyup(function(){
   let submenu = $(this).val();
-  let data    = $('#form_create').serialize();
   let href    = url + 'is_submenu';
+  let data    = $('#form_create').serialize();
   
   $.ajax({
     url: href,
@@ -79,6 +79,40 @@ $('#menu_id').change(function(){
     invalid('#menu_id');
   } else {
     valid('#menu_id');
+  }
+});
+
+// link
+$('#link').keyup(function(){
+  let link = $(this).val();
+  let href = url + 'is_link';
+  let data = $('#form_create').serialize();
+  $.ajax({
+    url: href,
+    type: 'post',
+    data: data,
+    success: function(result) {
+      if(result > 0) {
+        invalid('#link');
+      } else {
+        if (link.length < 3 || link.length > 120) {
+          invalid('#link');
+        } else {
+          valid('#link');
+        }
+      }
+    }
+  });
+});
+
+// icon 
+$('#icon').keyup(function(){
+  let icon = $(this).val();
+  
+  if(icon.length < 8 || icon.length > 30) {
+    invalid('#icon');
+  } else {
+    valid('#icon');
   }
 });
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/

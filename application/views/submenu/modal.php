@@ -12,21 +12,21 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
         </button>
       </div>
       <div class="modal-body text-dark">
-        <p><i class="fas fa-check"></i> isi form berikut untuk menambahkan
-        submenu baru!</p>
+        <p><i class="fas fa-xs fa-check"></i> Pastikan semua input bertanda 
+        <i class="fas fa-xs fa-asterisk text-danger mx-1"></i> diisi dengan
+        nilai yang valid! <i class="fas fa-check text-success"></i></p>
         
         <form id="form_create">
           
           <div class="form-group">
             <label for="submenu">submenu <span class="text-danger">*</span></label>
-            <input type="text" name="submenu" id="submenu" class="form-control"
-            value="">
+            <input type="text" name="submenu" id="submenu" class="form-control">
           </div>
             
           <div class="form-group">
             <label for="menu_id">menu <span class="text-danger">*</span></label>
-            <select name="menu_id" id="menu_id" class="form-control">
-              <option value="">pilih disini</option>
+            <select name="menu_id" id="menu_id" class="custom-select">
+              <option value="" selected>pilih disini</option>
               <?php foreach ($menu_data as $menu) : ?>
               <option value="<?= $menu['id'] ?>"><?= $menu['menu'] ?></option>
               <?php endforeach; ?>
@@ -46,8 +46,8 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
           
           <div class="form-group">
             <label for="is_active">status</label>
-            <select name="is_active" id="is_active" class="form-control">
-              <option value="0">pilih disini</option>
+            <select name="is_active" id="is_active" class="custom-select">
+              <option value="0" selected>pilih disini</option>
               <option value="1">active</option>
               <option value="0">not active</option>
             </select>

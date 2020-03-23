@@ -29,12 +29,21 @@ class Submenu extends CI_Controller
     $this->load->view('temp/footer');
   }
   
+  // validasi create submenu
   public function is_submenu()
   {
     $this->cek_ajax();
     $this->Submenu->is_submenu();
   }
   
+  // validasi create link
+  public function is_link()
+  {
+    $this->cek_ajax();
+    $this->Submenu->is_link();
+  }
+  
+  // cek request ajax 
   private function cek_ajax()
   {
     if(!isset($_POST['submenu']))

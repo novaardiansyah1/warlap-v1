@@ -21,12 +21,19 @@ class M_submenu extends CI_Model
                 ->get()->row_array();
   }
   
-  // validasi
+  // validasi create submenu
   function is_submenu()
   {
     $submenu = htmlspecialchars($_POST['submenu']);
-    $submenu = $this->db->get_where('submenu',['submenu' => $submenu])->num_rows();
-    echo($submenu);
+    echo $this->db->get_where('submenu',['submenu' => $submenu])->num_rows();
+    //echo($submenu);
+  }
+  
+  // validasi create link
+  function is_link()
+  {
+    $link = htmlspecialchars($_POST['link']);
+    echo $this->db->get_where('submenu',['link' => $link])->num_rows();
   }
   
   function insert()
