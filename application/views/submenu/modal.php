@@ -1,4 +1,4 @@
-<!-- Modal Login -->
+<!-- Modal Tambah Submenu -->
 <div class="modal fade" id="modal_create" data-backdrop="static" 
 tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
@@ -20,12 +20,12 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
           
           <div class="form-group">
             <label for="submenu">submenu <span class="text-danger">*</span></label>
-            <input type="text" name="submenu" id="submenu" class="form-control">
+            <input type="text" name="submenu" id="cr-submenu" class="form-control">
           </div>
             
           <div class="form-group">
             <label for="menu_id">menu <span class="text-danger">*</span></label>
-            <select name="menu_id" id="menu_id" class="custom-select">
+            <select name="menu_id" id="cr-menu_id" class="custom-select">
               <option value="" selected>pilih disini</option>
               <?php foreach ($menu_data as $menu) : ?>
               <option value="<?= $menu['id'] ?>"><?= $menu['menu'] ?></option>
@@ -35,18 +35,18 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
           
           <div class="form-group">
             <label for="link">link <span class="text-danger">*</span></label>
-            <input type="text" name="link" id="link" class="form-control">
+            <input type="text" name="link" id="cr-link" class="form-control">
           </div>
           
           <div class="form-group">
             <label for="icon">icon <span class="text-danger">*</span></label>
-            <input type="text" name="icon" id="icon" class="form-control"
+            <input type="text" name="icon" id="cr-icon" class="form-control"
             placeholder="fas fa-icon">
           </div>
           
           <div class="form-group">
             <label for="is_active">status</label>
-            <select name="is_active" id="is_active" class="custom-select">
+            <select name="is_active" id="cr-is_active" class="custom-select">
               <option value="0" selected>pilih disini</option>
               <option value="1">active</option>
               <option value="0">not active</option>
@@ -54,7 +54,7 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
           </div>
           
           <div class="mt-4">
-            <button type="button" class="btn btn-info btn-block" id="sub_create">
+            <button type="button" class="btn btn-info btn-block" id="cr-create_submenu">
               <i class="fas fa-paper-plane"></i> kirim
             </button>
           </div>
@@ -64,3 +64,12 @@ tabindex="-1" role="dialog" aria-labelledby="modal_createLabel" aria-hidden="tru
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal Update Submenu -->
+
+
+
+
+

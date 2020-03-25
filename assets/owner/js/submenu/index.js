@@ -49,7 +49,7 @@ $('#btn_create').click(function(){
 // validasi insert submenu
 
 // submenu
-$('#submenu').keyup(function(){
+$('#cr-submenu').keyup(function(){
   let submenu = $(this).val();
   let href    = url + 'is_submenu';
   let data    = $('#form_create').serialize();
@@ -60,12 +60,12 @@ $('#submenu').keyup(function(){
     data: data,
     success: function(result) {
       if(result > 0) {
-        invalid('#submenu');
+        invalid('#cr-submenu');
       } else {
         if (submenu.length < 3 || submenu.length > 20) {
-          invalid('#submenu');
+          invalid('#cr-submenu');
         } else {
-          valid('#submenu');
+          valid('#cr-submenu');
         }
       }
     }
@@ -73,17 +73,17 @@ $('#submenu').keyup(function(){
 });
 
 // menu
-$('#menu_id').change(function(){
+$('#cr-menu_id').change(function(){
   let menu = $(this).val();
   if(menu.length < 1){
-    invalid('#menu_id');
+    invalid('#cr-menu_id');
   } else {
-    valid('#menu_id');
+    valid('#cr-menu_id');
   }
 });
 
 // link
-$('#link').keyup(function(){
+$('#cr-link').keyup(function(){
   let link = $(this).val();
   let href = url + 'is_link';
   let data = $('#form_create').serialize();
@@ -94,12 +94,12 @@ $('#link').keyup(function(){
     data: data,
     success: function(result) {
       if(result > 0) {
-        invalid('#link');
+        invalid('#cr-link');
       } else {
         if (link.length < 3 || link.length > 120) {
-          invalid('#link');
+          invalid('#cr-link');
         } else {
-          valid('#link');
+          valid('#cr-link');
         }
       }
     }
@@ -107,18 +107,18 @@ $('#link').keyup(function(){
 });
 
 // icon 
-$('#icon').keyup(function(){
+$('#cr-icon').keyup(function(){
   let icon = $(this).val();
   
   if(icon.length < 8 || icon.length > 30) {
-    invalid('#icon');
+    invalid('#cr-icon');
   } else {
-    valid('#icon');
+    valid('#cr-icon');
   }
 });
 
 // kirim data
-$('#sub_create').click(function(){
+$('#cr-create_submenu').click(function(){
   let href = url + 'create';
   let data = $('#form_create').serialize();
   let tombol = $(this).html();
@@ -128,7 +128,7 @@ $('#sub_create').click(function(){
     data: data,
     type: 'post',
     beforeSend: function() {
-      loading('#sub_create');
+      loading('#cr-create_submenu');
     },
     success: function(result) {
       if(result == 'true') {
@@ -149,7 +149,7 @@ $('#sub_create').click(function(){
         });
       }
       
-      loading('#sub_create', tombol);
+      loading('#cr-create_submenu', tombol);
     }
   });
   
