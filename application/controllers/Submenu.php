@@ -63,6 +63,34 @@ class Submenu extends CI_Controller
     $this->Submenu->is_link();
   }
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+  public function get_by_id()
+  {
+    $this->cek_ajax();
+    $id = $_POST['id'];
+    $this->Submenu->get_by_id($id);
+  }
+  
+  public function update() 
+  {
+    $this->cek_ajax();
+    $this->_rules();
+    $this->form_validation->set_rules('submenu','submenu',
+    'required|trim|min_length[3]|max_length[20]');
+    $this->form_validation->set_rules('link', 'link', 
+    'required|trim|min_length[3]|max_length[120]');
+    
+    if($this->form_validation->run() == false)
+    {
+      echo 'false';
+    } else {
+      $this->Submenu->update();
+    }
+  }
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   
 
 
@@ -78,9 +106,9 @@ class Submenu extends CI_Controller
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   // cek request ajax 
-  private function cek_ajax()
+  private function cek_ajax($id='', $submenu='')
   {
-    if(!isset($_POST['submenu']))
+    if(!isset($_POST['id']) && !isset($_POST['submenu']))
     {
       redirect('submenu');
     }

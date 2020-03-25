@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       
-      <button class="btn btn-md bg-indigo" id="btn_create">
+      <button class="btn btn-md bg-indigo" id="btn-cr_submenu">
         <i class="fas fa-pencil-alt"></i> tambah submenu
       </button>
       
@@ -40,10 +40,10 @@
                 class="btn btn-sm btn-danger btn_delete">
                   <i class="fas fa-trash-alt"></i> delete
                 </a>
-                <a href="<?= site_url('submenu/update_view/'.$submenu['id']) ?>" 
-                class="btn btn-sm btn-info">
+                <button type="button" data-id="<?= $submenu['id'] ?>" 
+                class="btn btn-sm btn-info btn-up_submenu">
                   <i class="fas fa-edit"></i> update
-                </a>
+                </button>
               </td>
             </tr>
             <?php endforeach; ?>

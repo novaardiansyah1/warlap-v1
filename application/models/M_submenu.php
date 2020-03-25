@@ -16,11 +16,12 @@ class M_submenu extends CI_Model
   
   function get_by_id($id) 
   {
-    return $this->db->select('submenu.*, menu.menu')
-                ->from('submenu')
-                ->join('menu','menu.id = submenu.menu_id')
-                ->where('submenu.id', $id)
-                ->get()->row_array();
+    $submenu = $this->db->select('submenu.*, menu.menu')
+                    ->from('submenu')
+                    ->join('menu','menu.id = submenu.menu_id')
+                    ->where('submenu.id', $id)
+                    ->get()->row_array();
+    echo json_encode($submenu);
   }
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
@@ -51,7 +52,6 @@ class M_submenu extends CI_Model
   {
     $submenu = htmlspecialchars($_POST['submenu']);
     echo $this->db->get_where('submenu',['submenu' => $submenu])->num_rows();
-    //echo($submenu);
   }
   
   function is_link()
@@ -64,23 +64,24 @@ class M_submenu extends CI_Model
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-  function update($id)
+  function update()
   {
-    $submenu   = htmlspecialchars($this->input->post('submenu',true));
-    $menu_id   = htmlspecialchars($this->input->post('menu_id',true));
-    $link      = htmlspecialchars($this->input->post('link',true));
-    $icon      = htmlspecialchars($this->input->post('icon',true));
-    $is_active = htmlspecialchars($this->input->post('is_active',true));
-    
+    $id        = htmlspecialchars($_POST['id']);
+    $submenu   = htmlspecialchars($_POST['submenu']);
+    $menu_id   = htmlspecialchars($_POST['menu_id']);
+    $link      = htmlspecialchars($_POST['link']);
+    $icon      = htmlspecialchars($_POST['icon']);
+    $is_active = htmlspecialchars($_POST['is_active']);
+      
     $this->db->update('submenu',[
       'submenu'   => $submenu,
       'menu_id'   => $menu_id,
       'link'      => $link,
       'icon'      => $icon,
       'is_active' => $is_active,
-    ], ['id' => $id]);
+    ],['id' => $id]);
     
-    $this->_pesan('submenu berhasil diperbarui!','success');
+    echo 'true';
   }
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
