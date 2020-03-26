@@ -70,6 +70,17 @@ $('#submit-cr_menu').click(function() {
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+// delete
+$('.btn-del_menu').click(function(e) {
+  e.preventDefault();
+  
+  let href = $(this).attr('href');
+  confirm_delete(href);
+});
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 function sweetalert(html,type) {
   Swal.fire({
     title: '',
