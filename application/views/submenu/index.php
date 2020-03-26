@@ -40,10 +40,10 @@
                 class="btn btn-sm btn-danger btn_delete">
                   <i class="fas fa-trash-alt"></i> delete
                 </a>
-                <button type="button" data-id="<?= $submenu['id'] ?>" 
+                <a href="<?= site_url('submenu/get_by_id/'.$submenu['id']) ?>" 
                 class="btn btn-sm btn-info btn-up_submenu">
-                  <i class="fas fa-edit"></i> update
-                </button>
+                  <i class="fas fa-edit"></i> update <?= $submenu['id'] ?>
+                </a>
               </td>
             </tr>
             <?php endforeach; ?>

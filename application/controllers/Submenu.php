@@ -67,10 +67,15 @@ class Submenu extends CI_Controller
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-  public function get_by_id()
+  
+  public function is_up_submenu()
   {
     $this->cek_ajax();
-    $id = $_POST['id'];
+    $this->Submenu->is_up_submenu();
+  }
+  
+  public function get_by_id($id)
+  {
     $this->Submenu->get_by_id($id);
   }
   

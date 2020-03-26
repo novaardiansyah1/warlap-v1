@@ -3,35 +3,7 @@ $(document).ready(function() {
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 // base url
-let base_url = $('#base_url').attr('href');
-let url = base_url + 'submenu/';
-
-// autocomplete off 
-$('input').each(function(){
-  $(this).attr('autocomplete','off');
-});
-
-// function invalid 
-function invalid(selector) {
-  $(selector).removeClass('is-valid');
-  $(selector).addClass('is-invalid');
-}
-
-// function valid 
-function valid(selector) {
-  $(selector).removeClass('is-invalid');
-  $(selector).addClass('is-valid');
-}
-
-// function loading button
-function loading(selector, stop = null) {
-  if(stop == null) {
-    $(selector).html(`<span class="spinner-border spinner-border-sm"
-    role="status" aria-hidden="true"></span> loading..`);
-  } else {
-    $(selector).html(stop);
-  }
-}
+let url = base_url('submenu/');
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
 
@@ -155,16 +127,15 @@ $('#submit-cr_submenu').click(function(){
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-$('.btn-up_submenu').click(function() {
-  let href = url + 'get_by_id';
-  let id   = $(this).data('id');
+$('.btn-up_submenu').click(function(e) {
+  e.preventDefault();
+  let href = $('.btn-up_submenu').attr('href');
+  //let id   = $('.btn-up_submenu').attr('href');
   
   //siapkan data untuk modal
   $.ajax({
     url: href,
-    data: {
-      id: id
-    },
+    data: null,
     type: 'post',
     success: function(result) {
       let data = JSON.parse(result);
@@ -184,13 +155,29 @@ $('.btn-up_submenu').click(function() {
 
 // submenu
 $('#up-submenu').keyup(function(){
+  let id      = $('.btn-up_submenu').data('id');
   let submenu = $(this).val();
+  let href    = url + 'is_up_submenu';
   
-  if (submenu.length < 3 || submenu.length > 20) {
-    invalid('#up-submenu');
-  } else {
-    valid('#up-submenu');
-  }
+  $.ajax({
+    url: href,
+    data: {
+      id: id,
+      submenu: submenu
+    },
+    type: 'post',
+    success: function(result) {
+      if(result == 'false') {
+        invalid('#up-submenu');
+      } else {
+        if (submenu.length < 3 || submenu.length > 20) {
+          invalid('#up-submenu');
+        } else {
+          valid('#up-submenu');
+        }
+      }
+    }
+  });
 });
 
 // menu

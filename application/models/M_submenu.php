@@ -64,6 +64,24 @@ class M_submenu extends CI_Model
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+  function is_up_submenu()
+  {
+    $id      = htmlspecialchars($_POST['id']);
+    $submenu = htmlspecialchars($_POST['submenu']);
+    $sub1 = $this->db->get_where('submenu', ['submenu' => $submenu])->row_array();
+    $sub2 = $this->db->get_where('submenu', ['id' => $id])->row_array();
+    
+    if($sub1 !== null) {
+      if($sub1['submenu'] !== $sub2['submenu']) {
+        echo('false');
+      } else {
+        echo('true');
+      }
+    } else {
+      echo('true');
+    }
+  }
+  
   function update()
   {
     $id        = htmlspecialchars($_POST['id']);
