@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_menu extends CI_Model
 {
   
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+/*============================
+  function get data
+  ============================*/
   function get_all() 
   {
     return $this->db->get('menu')->result_array();
@@ -14,10 +16,11 @@ class M_menu extends CI_Model
   {
     return $this->db->get_where('menu', ['id' => $id])->row_array();
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
 
 
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+/*============================
+  function validation menu
+  ============================*/
   function is_cr_menu()
   {
     $menu = htmlspecialchars($_POST['menu']);
@@ -28,7 +31,10 @@ class M_menu extends CI_Model
       echo('true');
     }
   }
-  
+
+/*============================
+  function insert new menu
+  ============================*/  
   function create() 
   {
     $menu      = htmlspecialchars($_POST['menu']);
@@ -41,14 +47,13 @@ class M_menu extends CI_Model
     
     echo('true');
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
 
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
- function delete($id) 
- {
-   $this->db->delete('menu', ['id' => $id]);
- }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-
+/*============================
+  function delete menu
+  ============================*/
+  function delete($id) 
+  {
+    $this->db->delete('menu', ['id' => $id]);
+  }
+  
 }

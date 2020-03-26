@@ -81,6 +81,12 @@ function confirm_delete(href)
   }));
 }
 
-
+function sweetalert(html,type) {
+  Swal.fire({
+    title: '',
+    html: html,
+    type: type
+  });
+}
 
 
