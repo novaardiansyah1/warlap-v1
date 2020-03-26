@@ -129,8 +129,7 @@ $('#submit-cr_submenu').click(function(){
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 $('.btn-up_submenu').click(function(e) {
   e.preventDefault();
-  let href = $('.btn-up_submenu').attr('href');
-  //let id   = $('.btn-up_submenu').attr('href');
+  let href = $(this).attr('href');
   
   //siapkan data untuk modal
   $.ajax({
@@ -154,8 +153,8 @@ $('.btn-up_submenu').click(function(e) {
 // validasi update submenu
 
 // submenu
-$('#up-submenu').keyup(function(){
-  let id      = $('.btn-up_submenu').data('id');
+$('#up-submenu').keyup(function() {
+  let id      = $('#up-id').val();
   let submenu = $(this).val();
   let href    = url + 'is_up_submenu';
   
@@ -254,44 +253,11 @@ $('#submit-up_submenu').click(function(){
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 $('.btn_delete').click(function(e) {
   e.preventDefault();
-  // simpan link
   let href = $(this).attr('href');
-  // tampilkan konfirmasi
-  Swal.fire({
-    title: '',
-    html: 'apakah anda yakin? data akan dihapus permanen!',
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'hapus'
-  }).then((result => {
-    if(result.value) {
-      Swal.fire({
-        title: '',
-        html: 'data berhasil dihapus permanen.',
-        type: 'success'
-      });
-      
-      setTimeout(function() {
-        $(location).attr('href', href);
-      }, 2000);
-    }
-  }));
   
+  // tampilkan konfirmasi
+  confirm_delete(href);
 });
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-
-
-
-
-
-
 
 });

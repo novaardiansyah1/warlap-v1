@@ -42,7 +42,7 @@
                 </a>
                 <a href="<?= site_url('submenu/get_by_id/'.$submenu['id']) ?>" 
                 class="btn btn-sm btn-info btn-up_submenu">
-                  <i class="fas fa-edit"></i> update <?= $submenu['id'] ?>
+                  <i class="fas fa-edit"></i> update
                 </a>
               </td>
             </tr>

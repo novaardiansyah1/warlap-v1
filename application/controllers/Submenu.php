@@ -74,9 +74,13 @@ class Submenu extends CI_Controller
     $this->Submenu->is_up_submenu();
   }
   
-  public function get_by_id($id)
+  public function get_by_id($id=null)
   {
-    $this->Submenu->get_by_id($id);
+    if($id == null) {
+      redirect('submenu');
+    } else {
+      $this->Submenu->get_by_id($id);
+    }
   }
   
   public function update() 

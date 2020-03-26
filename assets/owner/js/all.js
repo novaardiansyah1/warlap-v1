@@ -56,5 +56,31 @@ function base_url(selector)
   return url;
 }
 
+function confirm_delete(href)
+{
+  Swal.fire({
+    title: '',
+    html: 'apakah anda yakin? data akan dihapus permanen!',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'hapus'
+  }).then((result => {
+    if(result.value) {
+      Swal.fire({
+        title: '',
+        html: 'data berhasil dihapus permanen.',
+        type: 'success'
+      });
+      
+      setTimeout(function() {
+        $(location).attr('href', href);
+      }, 2000);
+    }
+  }));
+}
+
+
 
 
