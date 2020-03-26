@@ -33,6 +33,28 @@ class Menu extends CI_Controller
 
 
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+  public function is_cr_menu()
+  {
+    $this->cek_ajax();
+    $this->Menu->is_cr_menu();
+  }
+  
+  public function create() 
+  {
+    $this->cek_ajax();
+    $this->form_validation->set_rules('menu','menu',
+    'required|trim|min_length[3]|max_length[20]');
+    
+    if($this->form_validation->run() == false) {
+      echo('false');
+    } else {
+      $this->Menu->create();
+    }
+  }
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
+
+
+/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   public function delete($id)
   {
     $this->Menu->delete($id);
@@ -43,11 +65,11 @@ class Menu extends CI_Controller
   
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   // cek request ajax 
-  private function cek_ajax($id='', $submenu='')
+  private function cek_ajax()
   {
-    if(!isset($_POST['id']) && !isset($_POST['submenu']))
+    if(!isset($_POST['id']) && !isset($_POST['menu']))
     {
-      redirect('submenu');
+      redirect('menu');
     }
   }
 /*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/

@@ -19,8 +19,8 @@ tabindex="-1" role="dialog" aria-labelledby="modal-cr_menuLabel" aria-hidden="tr
         <form id="form-cr_menu">
           
           <div class="form-group">
-            <label for="submenu">submenu <span class="text-danger">*</span></label>
-            <input type="text" name="submenu" id="cr-menu" class="form-control">
+            <label for="menu">menu <span class="text-danger">*</span></label>
+            <input type="text" name="menu" id="cr-menu" class="form-control">
           </div>
 
           <div class="form-group">
@@ -47,7 +47,7 @@ tabindex="-1" role="dialog" aria-labelledby="modal-cr_menuLabel" aria-hidden="tr
 
 
 
-<!-- Modal Update Submenu -->
+<!-- Modal Update menu -->
 <div class="modal fade" id="modal-up_submenu" data-backdrop="static" 
 tabindex="-1" role="dialog" aria-labelledby="modal-up_submenuLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
