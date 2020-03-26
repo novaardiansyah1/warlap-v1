@@ -13,6 +13,7 @@
             <tr>
               <th>No</th>
               <th>Menu</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -21,12 +22,19 @@
             <tr>
               <td><?= $i++ ?></td>
               <td><?= $menu['menu'] ?></td>
+              <td>
+                <?php if($menu['is_active'] == 1) : ?>
+                <div class="badge badge-info">Active</div>
+                <?php else : ?>
+                <div class="badge badge-danger">Not Active</div>
+                <?php endif; ?>
+              </td>
               <td class="mw_200">
                 <a href="<?= site_url('menu/delete/'.$menu['id']) ?>" 
                 class="btn btn-sm btn-danger btn-del_menu">
                   <i class="fas fa-trash-alt"></i> delete
                 </a>
-                <a href="<?= site_url('menu/update_view/'.$menu['id']) ?>" 
+                <a href="<?= site_url('menu/get_by_id/'.$menu['id']) ?>"
                 class="btn btn-sm btn-info btn-up_menu">
                   <i class="fas fa-edit"></i> update
                 </a>

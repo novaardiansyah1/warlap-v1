@@ -69,6 +69,58 @@ $(document).ready(function() {
     });
   });
 
+
+/*============================
+  show modal create menu
+  ============================*/
+  $('.btn-up_menu').click(function(e) {
+    e.preventDefault();
+    let href = $(this).attr('href');
+    
+    $.ajax({
+      url: href,
+      data: null,
+      type: 'post',
+      success: function(result) {
+        let data = JSON.parse(result);
+        $('#up-id').val(data.id);
+        $('#up-menu').val(data.menu);
+        $('#up-is_active').val(data.is_active);
+      }
+    });
+    
+    $('#modal-up_menu').modal('show');
+  });
+
+/*============================
+  validation update menu
+  ============================*/
+  $('#up-menu').keyup(function() {
+    let href = url + 'is_up_menu';
+    let id   = $('#up-id').val();
+    let menu = $(this).val();
+    
+    $.ajax({
+      url: href,
+      type: 'post',
+      data: {
+        id: id,
+        menu: menu
+      },
+      success: function(result) {
+        if(result == 'false') {
+          invalid('#up-menu');
+        } else {
+          if(menu.length < 3 || menu.length > 20) {
+            invalid('#up-menu');
+          } else {
+            valid('#up-menu');
+          }
+        }
+      }
+    });
+  });
+
 /*============================
   delete menu
   ============================*/

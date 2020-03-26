@@ -5,7 +5,7 @@ class M_menu extends CI_Model
 {
   
 /*============================
-  function get data
+  function to get data menu
   ============================*/
   function get_all() 
   {
@@ -14,7 +14,9 @@ class M_menu extends CI_Model
   
   function get_by_id($id) 
   {
-    return $this->db->get_where('menu', ['id' => $id])->row_array();
+    $menu = $this->db->get_where('menu', 
+            ['id' => $id])->row_array();
+    echo json_encode($menu);
   }
 
 
@@ -47,6 +49,51 @@ class M_menu extends CI_Model
     
     echo('true');
   }
+
+/*============================
+  function validation menu
+  ============================*/
+  function is_up_menu()
+  {
+    $id   = htmlspecialchars($_POST['id']);
+    $menu = htmlspecialchars($_POST['menu']);
+    
+    $data1 = $this->db->get_where('menu', ['id' => $id])->row_array();
+    $data2 = $this->db->get_where('menu', ['menu' => $menu])->row_array();
+    
+    if($data2 !== null) {
+      if($data2['menu'] !== $data1['menu']) {
+        echo('false');
+      } else {
+        echo('true');
+      }
+    } else {
+      echo('true');
+    }
+  }
+  
+/*============================
+  function update menu
+  ============================*/  
+  function update() 
+  {
+    $menu = $this->is_up_menu();
+    
+    if($menu == 'true') {
+      $id        = htmlspecialchars($_POST['id']);
+      $menu      = htmlspecialchars($_POST['menu']);
+      $is_active = htmlspecialchars($_POST['is_active']);
+      
+      $this->db->update('menu', [
+        'menu'      => $menu,
+        'is_active' => $is_active,
+      ], ['id' => $id]);
+      
+      echo('true');
+    }
+  }
+  
+
 
 /*============================
   function delete menu

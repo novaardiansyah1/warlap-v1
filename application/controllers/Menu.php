@@ -30,7 +30,7 @@ class Menu extends CI_Controller
     $this->load->view('temp/footer');
   }
 
-  /*============================
+/*============================
   validation create menu
   ============================*/
   public function is_cr_menu()
@@ -39,7 +39,7 @@ class Menu extends CI_Controller
     $this->Menu->is_cr_menu();
   }
   
-  /*============================
+/*============================
   create new menu
   ============================*/
   public function create() 
@@ -56,6 +56,44 @@ class Menu extends CI_Controller
   }
 
 /*============================
+  get menu by id
+  ============================*/
+  public function get_by_id($id)
+  {
+    if(!$id) {
+      redirect('menu');
+    } else {
+      $this->Menu->get_by_id($id);
+    }
+  }
+
+/*============================
+  validation update menu
+  ============================*/
+  public function is_up_menu()
+  {
+    $this->cek_ajax();
+    $this->Menu->is_up_menu();
+  }
+  
+/*============================
+  update menu
+  ============================*/
+  public function update() 
+  {
+    $this->cek_ajax();
+    $this->form_validation->set_rules('menu','menu',
+    'required|trim|min_length[3]|max_length[20]');
+    
+    if($this->form_validation->run() == false) {
+      echo('false');
+    } else {
+      $this->Menu->update();
+    }
+  }
+
+  
+/*============================
   delete menu
   ============================*/
   public function delete($id)
@@ -65,7 +103,7 @@ class Menu extends CI_Controller
   }
 
 /*============================
-  validation request aja
+  validation request ajax
   ============================*/
   private function cek_ajax()
   {
