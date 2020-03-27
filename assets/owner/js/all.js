@@ -94,5 +94,14 @@ $(document).ready(function() {
       type: type
     });
   }
-
+  
+  let html = $('.pesan').data('html');
+  let type = $('.pesan').data('type');
+  
+  if(html && type) {
+    sweetalert(html, type);
+  }
+  
+  
+  
 

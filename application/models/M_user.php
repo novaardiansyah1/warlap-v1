@@ -9,9 +9,8 @@ class M_user extends CI_Model
   ============================*/  
   function get_limit()
   {
-    return
-    $this->db->limit(8)
-             ->get('user')->result();
+    return $this->db->limit(8)
+                    ->get('user')->result();
   }
   
 /*============================
