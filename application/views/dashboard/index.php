@@ -112,7 +112,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer text-center">
-          <a href="javascript::">View All Users</a>
+          <a href="#">View All Users</a>
         </div>
         <!-- /.card-footer -->
       </div>

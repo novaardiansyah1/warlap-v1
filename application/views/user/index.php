@@ -44,7 +44,7 @@
                   <i class="fas fa-lock-open"></i> buka
                 </a>
                 <?php endif; ?>
-                <a href="#" class="btn btn-sm bg-info btn-detail">
+                <a href="<?= site_url('user/detail/'.$user->id) ?>" class="btn btn-sm bg-info btn-detail">
                   <i class="fas fa-search"></i> detail
                 </a>
               </td>

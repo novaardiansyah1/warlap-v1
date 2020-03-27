@@ -22,6 +22,14 @@ class M_user extends CI_Model
     return $this->db->get('user')->result();
   }
   
+/*============================
+  ambil data user by id
+  ============================*/
+  function get_by_id($id)
+  {
+    return $this->db->get_where('user', ['id' => $id])->row();
+  }
+
   function update($id)
   {
     $nama      = htmlspecialchars($this->input->post('nama', true));
