@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
+      <!-- pesan sweetalert -->
+      <div class="pesan" data-html="<?= $this->session->flashdata('html') ?>"
+      data-type="<?= $this->session->flashdata('type') ?>"></div>
       
       <div class="table-responsive mt-4">
         <table class="table table-bordered table-hover"
@@ -36,7 +39,8 @@
               </td>
               <td>
                 <?php if($user->is_active == 0 || $user->is_active == 1) : ?>
-                <a href="#" class="btn btn-sm bg-danger btn-blokir">
+                <a href="<?= site_url('user/blokir/'.$user->id) ?>" 
+                class="btn btn-sm bg-danger btn_blokir">
                   <i class="fas fa-lock"></i> blokir
                 </a>
                 <?php else : ?>

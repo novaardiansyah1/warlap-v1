@@ -28,20 +28,32 @@ class User extends CI_Controller
     $this->load->view('temp/footer'); 
   }
   
-  public function detail($id)
+  public function detail($id=null)
   {
-    $data = [
-      'title'      => 'kelola user',
-      'post_title' => 'kelola akun pengguna',
-      'laporan'    => $this->Lapor->get_nums(),
-      'user'       => $this->User->get_by_id($id)
-    ];
-    
-    $this->load->view('temp/header', $data);
-    $this->load->view('temp/topbar');
-    $this->load->view('temp/sidebar');
-    $this->load->view('user/detail');
-    $this->load->view('temp/footer');
+    if($id == null) {
+      redirect('user');
+    } else {
+      $data = [
+        'title'      => 'kelola user',
+        'post_title' => 'kelola akun pengguna',
+        'laporan'    => $this->Lapor->get_nums(),
+        'user'       => $this->User->get_by_id($id)
+      ];
+      
+      $this->load->view('temp/header', $data);
+      $this->load->view('temp/topbar');
+      $this->load->view('temp/sidebar');
+      $this->load->view('user/detail');
+      $this->load->view('temp/footer');
+    }
   }
   
+  public function blokir($id=null)
+  {
+    if($id == null) {
+      redirect('user');
+    } else {
+      $this->User->blokir($id);
+    }
+  }
 }

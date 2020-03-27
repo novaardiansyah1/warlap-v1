@@ -29,7 +29,18 @@ class M_user extends CI_Model
   {
     return $this->db->get_where('user', ['id' => $id])->row();
   }
-
+  
+/*============================
+  blokir user
+  ============================*/
+  function blokir($id)
+  {
+    $this->db->set('is_active', 2)
+             ->update('user', ['id' => $id]);
+    $this->_pesan('akun pengguna berhasil diblokir.','success');
+    redirect('user');
+  }
+  
   function update($id)
   {
     $nama      = htmlspecialchars($this->input->post('nama', true));
