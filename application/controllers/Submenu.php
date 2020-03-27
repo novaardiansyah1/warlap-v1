@@ -7,6 +7,7 @@ class Submenu extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    cek_akses();
     $this->load->model('M_submenu', 'Submenu');
     $this->load->model('M_menu', 'Menu');
   }

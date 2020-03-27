@@ -6,6 +6,7 @@ class Profile extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    cek_akses();
     $this->load->model('M_lapor', 'Lapor');
     $this->load->model('M_user', 'User');
   }
