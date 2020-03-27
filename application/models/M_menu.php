@@ -63,36 +63,31 @@ class M_menu extends CI_Model
     
     if($data2 !== null) {
       if($data2['menu'] !== $data1['menu']) {
-        echo('false');
+        echo(false);
       } else {
-        echo('true');
+        echo(true);
       }
     } else {
-      echo('true');
+      echo(true);
     }
   }
   
 /*============================
   function update menu
   ============================*/  
-  function update() 
+  function update()
   {
-    $menu = $this->is_up_menu();
+    $id        = htmlspecialchars($_POST['id']);
+    $menu      = htmlspecialchars($_POST['menu']);
+    $is_active = htmlspecialchars($_POST['is_active']);
     
-    if($menu == 'true') {
-      $id        = htmlspecialchars($_POST['id']);
-      $menu      = htmlspecialchars($_POST['menu']);
-      $is_active = htmlspecialchars($_POST['is_active']);
-      
-      $this->db->update('menu', [
-        'menu'      => $menu,
-        'is_active' => $is_active,
-      ], ['id' => $id]);
-      
-      echo('true');
-    }
+    $this->db->update('menu', [
+      'menu'      => $menu,
+      'is_active' => $is_active
+    ], ['id' => $id]);
+    
+    print('true');
   }
-  
 
 
 /*============================

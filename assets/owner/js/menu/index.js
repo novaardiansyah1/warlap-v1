@@ -108,7 +108,7 @@ $(document).ready(function() {
         menu: menu
       },
       success: function(result) {
-        if(result == 'false') {
+        if(result == false) {
           invalid('#up-menu');
         } else {
           if(menu.length < 3 || menu.length > 20) {
@@ -117,6 +117,36 @@ $(document).ready(function() {
             valid('#up-menu');
           }
         }
+      }
+    });
+  });
+
+/*============================
+  update menu
+  ============================*/
+  $('#submit-up_menu').click(function() {
+    let href   = url + 'update';
+    let data   = $('#form-up_menu').serialize();
+    let tombol = $(this).html();
+    
+    $.ajax({
+      url: href,
+      type: 'post',
+      data: data,
+      beforeSend: function() {
+        loading('#submit-up_menu');
+      },
+      success: function(result) {
+        if(result == 'false') {
+          sweetalert('gagal memperbarui menu, mohon cek kembali formulir anda.'
+          ,'error');
+        } else {
+          sweetalert('berhasil memperbarui menu.', 'success');
+          setTimeout(function() {
+            $(location).attr('href', href);
+          }, 1500);
+        }
+        loading('#submit-up_menu', tombol);
       }
     });
   });
