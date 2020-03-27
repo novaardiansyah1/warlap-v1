@@ -3,6 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_user extends CI_Model 
 {
+  
+/*============================
+  ambil 8 data user terbaru
+  ============================*/  
+  function get_limit()
+  {
+    return
+    $this->db->limit(8)
+             ->get('user')->result();
+  }
+  
+/*============================
+  ambil semua data user
+  ============================*/
+  function get_all()
+  {
+    $this->db->where('role_id', 2);
+    return $this->db->get('user')->result();
+  }
+  
   function update($id)
   {
     $nama      = htmlspecialchars($this->input->post('nama', true));

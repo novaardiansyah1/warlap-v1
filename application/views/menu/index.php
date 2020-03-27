@@ -7,7 +7,7 @@
       </button>
       
       <div class="table-responsive mt-4">
-        <table class="table table-bordered table-hover"
+        <table class="table tazble-bordered table-hover"
         id="tabel">
           <thead class="text-center text-white bg-secondary">
             <tr>
