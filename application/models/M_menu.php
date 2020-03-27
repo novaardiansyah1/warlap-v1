@@ -81,14 +81,32 @@ class M_menu extends CI_Model
     $menu      = htmlspecialchars($_POST['menu']);
     $is_active = htmlspecialchars($_POST['is_active']);
     
+    $data1 = $this->db->get_where('menu', ['id' => $id])->row_array();
+    $data2 = $this->db->get_where('menu', ['menu' => $menu])->row_array();
+    
+    if($data2 !== null) {
+      if($data2['menu'] !== $data1['menu']) {
+        print(false);
+      } else {
+        $this->proses_update($id, $menu, $is_active);
+      }
+    } else {
+      $this->proses_update($id, $menu, $is_active);
+    }
+  }
+
+/*============================
+  function proses update menu
+  ============================*/  
+  function proses_update($id, $menu, $is_active)
+  {
     $this->db->update('menu', [
       'menu'      => $menu,
       'is_active' => $is_active
     ], ['id' => $id]);
     
-    print('true');
+    print(true);
   }
-
 
 /*============================
   function delete menu

@@ -137,7 +137,7 @@ $(document).ready(function() {
         loading('#submit-up_menu');
       },
       success: function(result) {
-        if(result == 'false') {
+        if(result == false) {
           sweetalert('gagal memperbarui menu, mohon cek kembali formulir anda.'
           ,'error');
         } else {
