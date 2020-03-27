@@ -17,6 +17,7 @@ class User extends CI_Controller
       'title'      => 'kelola user',
       'post_title' => 'kelola akun pengguna',
       'user_data'  => $this->User->get_all(),
+      'script'     => 'user/index.js'
     ];
     
     $this->load->view('temp/header', $data);
