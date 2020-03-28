@@ -38,11 +38,13 @@
           </ul>
           
           <?php if($user->is_active == 0 || $user->is_active == 1) : ?>
-          <a href="#" class="btn bg-danger btn-block btn-blokir">
+          <a href="<?= site_url('user/blokir/'.$user->id) ?>" 
+          class="btn bg-danger btn-block btn_blokir">
             <i class="fas fa-lock"></i> blokir
           </a>
           <?php else : ?>
-          <a href="#" class="btn bg-primary btn-block btn-buka_blokir">
+          <a href="<?= site_url('user/buka_blokir/'.$user->id) ?>" 
+          class="btn bg-primary btn-block btn_buka_blokir">
             <i class="fas fa-lock-open"></i> buka blockir
           </a>
           <?php endif; ?>

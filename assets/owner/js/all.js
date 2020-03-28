@@ -83,7 +83,27 @@ $(document).ready(function() {
       }
     }));
   }
-
+  
+/*==============================
+  pesan konfirmasi sweetalert
+  ==============================*/
+  function sweet_confirm(html, btn, href) 
+  {
+    Swal.fire({
+      title: '',
+      html: html,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: btn
+    }).then((result => {
+      if(result.value) {
+        $(location).attr('href', href);
+      }
+    }));
+  }
+  
 /*==============================
   pesan sweetalert
   ==============================*/

@@ -36,8 +36,21 @@ class M_user extends CI_Model
   function blokir($id)
   {
     $this->db->set('is_active', 2)
-             ->update('user', ['id' => $id]);
+             ->where('id', $id)
+             ->update('user');
     $this->_pesan('akun pengguna berhasil diblokir.','success');
+    redirect('user');
+  }
+  
+/*============================
+  buka blokir user
+  ============================*/
+  function buka_blokir($id)
+  {
+    $this->db->set('is_active', 1)
+             ->where('id', $id)
+             ->update('user');
+    $this->_pesan('akun pengguna berhasil diaktifkan kembali.','success');
     redirect('user');
   }
   

@@ -44,7 +44,8 @@
                   <i class="fas fa-lock"></i> blokir
                 </a>
                 <?php else : ?>
-                <a href="#" class="btn btn-sm bg-primary btn-buka_blokir">
+                <a href="<?= site_url('user/buka_blokir/'.$user->id) ?>" 
+                class="btn btn-sm bg-primary btn_buka_blokir">
                   <i class="fas fa-lock-open"></i> buka
                 </a>
                 <?php endif; ?>

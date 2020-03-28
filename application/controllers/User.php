@@ -37,7 +37,8 @@ class User extends CI_Controller
         'title'      => 'kelola user',
         'post_title' => 'kelola akun pengguna',
         'laporan'    => $this->Lapor->get_nums(),
-        'user'       => $this->User->get_by_id($id)
+        'user'       => $this->User->get_by_id($id),
+        'script'     => 'user/index.js'
       ];
       
       $this->load->view('temp/header', $data);
@@ -54,6 +55,15 @@ class User extends CI_Controller
       redirect('user');
     } else {
       $this->User->blokir($id);
+    }
+  }
+  
+  public function buka_blokir($id=null)
+  {
+    if($id == null) {
+      redirect('user');
+    } else {
+      $this->User->buka_blokir($id);
     }
   }
 }

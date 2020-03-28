@@ -5,25 +5,25 @@ $(document).ready(function() {
   let url = base_url('user');
     
 /*==============================
-  jika click blokir
+  jika klik blokir
   ==============================*/
   $('.btn_blokir').click(function(e) {
     e.preventDefault();
     let href = $(this).attr('href');
     
-    Swal.fire({
-      title: '',
-      html: 'apakah anda yakin? user terkait akan dilarang login!',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'blokir'
-    }).then((result => {
-      if(result.value) {
-        $(location).attr('href', href);
-      }
-    }));
+    sweet_confirm('apakah anda yakin? akun pengguna akan diblokir dari layanan.',
+    'blokir', href);  
+  });
+
+/*==============================
+  jika klik buka blokir
+  ==============================*/
+  $('.btn_buka_blokir').click(function(e) {
+    e.preventDefault();
+    let href = $(this).attr('href');
+    
+    sweet_confirm('apakah anda yakin? akun pengguna akan diaktifkan kembali.',
+    'aktifkan', href);
   });
 
 
