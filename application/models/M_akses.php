@@ -26,10 +26,19 @@ class M_akses extends CI_Model
       // jika terdapat submenu terkait
       $this->_pesan('terdapat submenu terkait, dilarang menghapus hak akses ini.',
       'error');
+    } elseif($id == 2) {
+      $this->_pesan('hak akses member tidak dapat dihapus!',
+      'error');
     } else {
       // jika tidak terkait, hapus role
       $this->db->where('id', $id);
       $this->db->delete('role');
+      
+      // ubah role id user menjadi member jika terkait
+      $this->db->set('role_id', 2)
+               ->where('role_id', $id)
+               ->update('user');
+               
       $this->_pesan('berhasil menghapus hak akses.', 'success');
     }
   }
