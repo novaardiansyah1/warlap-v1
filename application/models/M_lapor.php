@@ -11,6 +11,24 @@ class M_lapor extends CI_Model
     return$this->db->get_where('laporan', ['user_id' => $id])->num_rows(); 
   }
   
+/*=============================
+  ambil data diproses
+  =============================*/
+  function count_request()
+  {
+    $this->db->where('status', 'proses');
+    return $this->db->get('laporan')->num_rows();
+  }
+  
+/*=============================
+  ambil data diselesai
+  =============================*/
+  function count_finish()
+  {
+    $this->db->where('status', 'selesai');
+    return $this->db->get('laporan')->num_rows();
+  }
+  
   function kirim_laporan()
   {
     $user_id  = htmlspecialchars($_POST['user_id']);
@@ -23,7 +41,8 @@ class M_lapor extends CI_Model
       'user_id'     => $user_id,
       'judul'       => $judul,
       'laporan'     => $laporan,
-      'lampiran'    => 'default.jpg'
+      'lampiran'    => 'default.jpg',
+      'status'      => 'proses'
     ]);
     
     echo 'true';

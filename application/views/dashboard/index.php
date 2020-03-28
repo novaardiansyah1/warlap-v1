@@ -13,7 +13,7 @@
               Permintaan Laporan
             </span>
             <span class="info-box-number">
-              10
+              <?= $request_laporan ?>
               <small>laporan</small>
             </span>
           </div>
@@ -33,7 +33,7 @@
               Laporan Selesai
             </span>
             <span class="info-box-number">
-              41,410 
+              <?= $laporan_selesai ?>
               <small>laporan</small>
             </span>
           </div>
@@ -55,7 +55,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Administrator</span>
             <span class="info-box-number">
-              760
+              <?= $user_admin ?>
               <small>akun</small>
             </span>
           </div>
@@ -75,7 +75,7 @@
               Pengguna
             </span>
             <span class="info-box-number">
-              2,000
+              <?= $user_user ?>
               <small>akun</small>
             </span>
           </div>

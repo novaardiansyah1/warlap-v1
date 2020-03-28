@@ -54,6 +54,24 @@ class M_user extends CI_Model
     redirect('user');
   }
   
+/*============================
+  ambil data jumlah admin
+  ============================*/
+  function count_admin()
+  {
+    $this->db->where('role_id', 1);
+    return $this->db->get('user')->num_rows();
+  }
+  
+/*============================
+  ambil data jumlah user
+  ============================*/
+  function count_user()
+  {
+    $this->db->where('role_id', 2);
+    return $this->db->get('user')->num_rows();
+  }
+  
   function update($id)
   {
     $nama      = htmlspecialchars($this->input->post('nama', true));
