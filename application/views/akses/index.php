@@ -34,7 +34,7 @@
                 class="btn btn-sm btn-primary mb-1 btn-up_role">
                   <i class="fas fa-edit"></i> edit
                 </a>
-                <a href="<?= site_url('menu/get_by_id/'.$role->id) ?>"
+                <a href="<?= site_url('akses/hak_akses/'.$role->id) ?>"
                 class="btn btn-sm btn-info mb-1 btn-up_menu">
                   <i class="fas fa-key"></i> akses
                 </a>

@@ -21,6 +21,46 @@ class M_akses extends CI_Model
     print(json_encode($role));
   }
 
+/*==============================
+  get data role by id
+  ==============================*/
+  function get_role($id)
+  {
+    return $this->db->get_where('role', ['id' => $id])->row();
+  }
+
+/*==============================
+  cek ketersediaan hak akses
+  ==============================*/  
+  public function cek_hak_akses() 
+  {
+    $role_id = htmlspecialchars($_POST['role_id']);
+    $menu_id = htmlspecialchars($_POST['menu_id']);
+    
+    $this->db->where([
+      'role_id' => $role_id,
+      'menu_id' => $menu_id
+    ]);
+    $hak_akses = $this->db->get('hak_akses')->num_rows();
+    
+    if($hak_akses < 1)
+    {
+      // jika belum ceklis
+      $this->db->insert('hak_akses', [
+        'role_id' => $role_id,
+        'menu_id' => $menu_id
+      ]);
+    } else {
+      // jika sudah ceklis
+      $this->db->where([
+        'role_id' => $role_id,
+        'menu_id' => $menu_id
+      ]);
+      $this->db->delete('hak_akses');
+    }
+    print(true);
+  }
+  
 /*============================
   cek ketersediaan role
   ============================*/

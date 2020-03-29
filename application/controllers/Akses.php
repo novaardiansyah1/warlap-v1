@@ -12,6 +12,7 @@ class Akses extends CI_Controller
     parent::__construct();
     cek_akses();
     $this->load->model('M_akses', 'Akses');
+    $this->load->model('M_menu', 'Menu');
   }
 
   public function index()
@@ -30,6 +31,36 @@ class Akses extends CI_Controller
     $this->load->view('Akses/modal');
     $this->load->view('temp/footer');
   }
+  
+  public function hak_akses($id)
+  {
+    $data = [
+      'title'      => 'kelola akses',
+      'post_title' => 'kelola hak akses user',
+      'menu_data'  => $this->Menu->get_all(),
+      'role'       => $this->Akses->get_role($id),
+      'script'     => 'akses/akses.js'
+    ];
+    
+    $this->load->view('temp/header', $data);
+    $this->load->view('temp/sidebar');
+    $this->load->view('temp/topbar');
+    $this->load->view('Akses/hak_akses');
+    $this->load->view('temp/footer');
+  }
+  
+/*==============================
+  cek ketersediaan hak akses
+  ==============================*/  
+  public function cek_hak_akses() 
+  {
+    if(!isset($_POST['role_id'])) {
+      redirect('akses');
+    } else {
+      $this->Akses->cek_hak_akses();
+    }
+  }
+  
 
 /*==============================
   cek ketersediaan role
