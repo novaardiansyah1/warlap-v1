@@ -30,28 +30,19 @@ class Akses extends CI_Controller
     $this->load->view('Akses/modal');
     $this->load->view('temp/footer');
   }
-  
-  public function delete_role($id=null)
-  {
-    $this->cek_id($id);
-    $this->Akses->delete_role($id);
-    redirect('akses');
-  }
-  
-  private function cek_id($id)
-  {
-    if($id == null)
-    {
-      redirect('akses');
-    }
-  }
-  
+
+/*==============================
+  cek ketersediaan role
+  ==============================*/  
   public function is_cr_role()
   {
     $this->_ajax_role();
     $this->Akses->is_cr_role();
   }
-  
+
+/*==============================
+  membuat role baru
+  ==============================*/  
   public function create_role() 
   {
     $this->_ajax_role();
@@ -67,9 +58,69 @@ class Akses extends CI_Controller
     }
   }
   
+/*==============================
+  cek ketersediaan role
+  ==============================*/  
+  public function is_up_role()
+  {
+    $this->_ajax_role();
+    $this->Akses->is_up_role();
+  }
+  
+/*==============================
+  get data role by id
+  ==============================*/  
+  public function get_by_id($id=null)
+  {
+    $this->cek_id($id);
+    $this->Akses->get_by_id($id);
+  }
+  
+/*==============================
+  perbarui data role
+  ==============================*/  
+  public function update_role()
+  {
+    $this->_ajax_role();
+    
+    $this->form_validation->set_rules('role','role', 
+    'required|trim|min_length[5]|max_length[30]');
+    
+    if($this->form_validation->run() == false)
+    {
+      print(false);
+    } else {
+      $this->Akses->update_role();
+    }
+  }
+  
+/*==============================
+  Menghapus data role
+  ==============================*/  
+  public function delete_role($id=null)
+  {
+    $this->cek_id($id);
+    $this->Akses->delete_role($id);
+    redirect('akses');
+  }
+  
+/*==============================
+  cek request ajax
+  ==============================*/  
   private function _ajax_role()
   {
     if(!(isset($_POST['role']))) {
+      redirect('akses');
+    }
+  }
+
+/*==============================
+  cek params $id
+  ==============================*/  
+  private function cek_id($id)
+  {
+    if($id == null)
+    {
       redirect('akses');
     }
   }

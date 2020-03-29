@@ -12,6 +12,15 @@ class M_akses extends CI_Model
     return $this->db->get('role')->result();
   }
   
+/*==============================
+  get data role by id
+  ==============================*/  
+  function get_by_id($id)
+  {
+    $role = $this->db->get_where('role', ['id' => $id])->row();
+    print(json_encode($role));
+  }
+  
 /*============================
   hapus data role
   ============================*/
@@ -60,13 +69,53 @@ class M_akses extends CI_Model
   }
   
 /*============================
-  proses tambah role
+  cek ketersediaan role
   ============================*/
-  function create_role() 
+  function is_up_role()
   {
+    $id   = htmlspecialchars($_POST['id']);
     $role = htmlspecialchars($_POST['role']);
     
-    $this->db->insert('role', ['role' => $role]);
+    $roleId   = $this->db->get_where('role', ['id' => $id])->row();
+    $roleRole = $this->db->get_where('role', ['role' => $role])->row();
+    
+    if(!empty($roleRole->role)) {
+      if($roleRole->role !== $roleId->role) {
+        print(false);
+      } else {
+        print(true);
+      }
+    } else {
+      print(true);
+    }
+  }  
+
+/*============================
+  proses tambah role
+  ============================*/
+  function update_role() 
+  {
+    $id   = htmlspecialchars($_POST['id']);
+    $role = htmlspecialchars($_POST['role']);
+    
+    $roleId   = $this->db->get_where('role', ['id' => $id])->row();
+    $roleRole = $this->db->get_where('role', ['role' => $role])->row();
+    
+    if(!empty($roleRole->role)) {
+      if($roleRole->role !== $roleId->role) {
+        print(false);
+      } else {
+        $this->proses_update($id, $role);
+      }
+    } else {
+      $this->proses_update($id, $role);
+    }
+  }
+  
+  function proses_update($id, $role)
+  {
+    $this->db->update('role', ['role' => $role], 
+    ['id' => $id]);
     print(true);
   }
   
@@ -82,9 +131,7 @@ class M_akses extends CI_Model
     
     $this->session->set_flashdata($data);
   }
-
-
-
+  
   
   
   

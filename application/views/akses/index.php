@@ -30,8 +30,8 @@
                 class="btn btn-sm btn-danger mb-1 btn-del_role">
                   <i class="fas fa-trash-alt"></i> hapus
                 </a>
-                <a href="<?= site_url('menu/delete/'.$role->id) ?>" 
-                class="btn btn-sm btn-primary mb-1 btn-del_menu">
+                <a href="<?= site_url('akses/get_by_id/'.$role->id) ?>" 
+                class="btn btn-sm btn-primary mb-1 btn-up_role">
                   <i class="fas fa-edit"></i> edit
                 </a>
                 <a href="<?= site_url('menu/get_by_id/'.$role->id) ?>"
