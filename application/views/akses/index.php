@@ -6,7 +6,7 @@
       <div class="pesan" data-html="<?= $this->session->flashdata('html') ?>"
       data-type="<?= $this->session->flashdata('type') ?>"></div>
       
-      <button type="button" class="btn btn-md bg-indigo">
+      <button type="button" class="btn btn-md bg-indigo btn-cr_role">
         <i class="fas fa-sm fa-plus"></i> Tambah Akses
       </button>
       

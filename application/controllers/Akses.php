@@ -27,6 +27,7 @@ class Akses extends CI_Controller
     $this->load->view('temp/sidebar');
     $this->load->view('temp/topbar');
     $this->load->view('Akses/index');
+    $this->load->view('Akses/modal');
     $this->load->view('temp/footer');
   }
   
@@ -45,9 +46,33 @@ class Akses extends CI_Controller
     }
   }
   
+  public function is_cr_role()
+  {
+    $this->_ajax_role();
+    $this->Akses->is_cr_role();
+  }
   
+  public function create_role() 
+  {
+    $this->_ajax_role();
+    
+    $this->form_validation->set_rules('role','role', 
+    'required|trim|is_unique[role.role]|min_length[5]|max_length[30]');
+    
+    if($this->form_validation->run() == false)
+    {
+      print(false);
+    } else {
+      $this->Akses->create_role();
+    }
+  }
   
-  
+  private function _ajax_role()
+  {
+    if(!(isset($_POST['role']))) {
+      redirect('akses');
+    }
+  }
   
   
   

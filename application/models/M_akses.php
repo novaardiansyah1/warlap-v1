@@ -42,6 +42,33 @@ class M_akses extends CI_Model
       $this->_pesan('berhasil menghapus hak akses.', 'success');
     }
   }
+
+/*============================
+  cek ketersediaan role
+  ============================*/
+  function is_cr_role()
+  {
+    $role = htmlspecialchars($_POST['role']);
+    $role = $this->db->get_where('role', ['role' => $role])->num_rows();
+    
+    if($role > 0)
+    {
+      print(false);
+    } else {
+      print(true);
+    }
+  }
+  
+/*============================
+  proses tambah role
+  ============================*/
+  function create_role() 
+  {
+    $role = htmlspecialchars($_POST['role']);
+    
+    $this->db->insert('role', ['role' => $role]);
+    print(true);
+  }
   
 /*============================
   pesan sweetalert
