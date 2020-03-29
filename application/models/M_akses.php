@@ -20,37 +20,6 @@ class M_akses extends CI_Model
     $role = $this->db->get_where('role', ['id' => $id])->row();
     print(json_encode($role));
   }
-  
-/*============================
-  hapus data role
-  ============================*/
-  function delete_role($id)
-  {
-    // cek apakah terdapat submenu terkait role
-    $role    = $this->db->get_where('hak_akses', ['role_id' => $id])->row();
-    $menu_id = $role->menu_id;
-    $menu    = $this->db->get_where('submenu', ['menu_id' => $menu_id])->num_rows();
-    
-    if($menu > 0) {
-      // jika terdapat submenu terkait
-      $this->_pesan('terdapat submenu terkait, dilarang menghapus hak akses ini.',
-      'error');
-    } elseif($id == 2) {
-      $this->_pesan('hak akses member tidak dapat dihapus!',
-      'error');
-    } else {
-      // jika tidak terkait, hapus role
-      $this->db->where('id', $id);
-      $this->db->delete('role');
-      
-      // ubah role id user menjadi member jika terkait
-      $this->db->set('role_id', 2)
-               ->where('role_id', $id)
-               ->update('user');
-               
-      $this->_pesan('berhasil menghapus hak akses.', 'success');
-    }
-  }
 
 /*============================
   cek ketersediaan role
@@ -66,6 +35,16 @@ class M_akses extends CI_Model
     } else {
       print(true);
     }
+  }
+  
+/*============================ 
+  proses membuat role baru
+  ============================*/
+  function create_role()
+  {
+    $role = htmlspecialchars($_POST['role']);
+    $this->db->insert('role', ['role' => $role]);
+    print(true);
   }
   
 /*============================
@@ -132,8 +111,36 @@ class M_akses extends CI_Model
     $this->session->set_flashdata($data);
   }
   
-  
-  
+/*============================
+  hapus data role
+  ============================*/
+  function delete_role($id)
+  {
+    // cek apakah terdapat submenu terkait role
+    $role    = $this->db->get_where('hak_akses', ['role_id' => $id])->row();
+    $menu_id = $role->menu_id;
+    $menu    = $this->db->get_where('submenu', ['menu_id' => $menu_id])->num_rows();
+    
+    if($menu > 0) {
+      // jika terdapat submenu terkait
+      $this->_pesan('terdapat submenu terkait, dilarang menghapus hak akses ini.',
+      'error');
+    } elseif($id == 2) {
+      $this->_pesan('hak akses member tidak dapat dihapus!',
+      'error');
+    } else {
+      // jika tidak terkait, hapus role
+      $this->db->where('id', $id);
+      $this->db->delete('role');
+      
+      // ubah role id user menjadi member jika terkait
+      $this->db->set('role_id', 2)
+               ->where('role_id', $id)
+               ->update('user');
+               
+      $this->_pesan('berhasil menghapus hak akses.', 'success');
+    }
+  }  
   
   
 }
