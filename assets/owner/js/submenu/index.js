@@ -1,22 +1,11 @@
 $(document).ready(function() {
 
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-// base url
 let url = base_url('submenu/');
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-// show modal create
 $('#btn-cr_submenu').click(function(){
   $('#modal-cr_submenu').modal('show');
 });
 
-// validasi insert submenu
-
-// submenu
 $('#cr-submenu').keyup(function(){
   let submenu = $(this).val();
   let href    = url + 'is_submenu';
@@ -40,7 +29,6 @@ $('#cr-submenu').keyup(function(){
   });
 });
 
-// menu
 $('#cr-menu_id').change(function(){
   let menu = $(this).val();
   if(menu.length < 1){
@@ -50,7 +38,6 @@ $('#cr-menu_id').change(function(){
   }
 });
 
-// link
 $('#cr-link').keyup(function(){
   let link = $(this).val();
   let href = url + 'is_link';
@@ -74,7 +61,6 @@ $('#cr-link').keyup(function(){
   });
 });
 
-// icon 
 $('#cr-icon').keyup(function(){
   let icon = $(this).val();
   
@@ -85,7 +71,6 @@ $('#cr-icon').keyup(function(){
   }
 });
 
-// kirim data
 $('#submit-cr_submenu').click(function(){
   let href = url + 'create';
   let data = $('#form_create').serialize();
@@ -122,16 +107,11 @@ $('#submit-cr_submenu').click(function(){
   });
   
 });
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 $('.btn-up_submenu').click(function(e) {
   e.preventDefault();
   let href = $(this).attr('href');
   
-  //siapkan data untuk modal
   $.ajax({
     url: href,
     data: null,
@@ -150,9 +130,6 @@ $('.btn-up_submenu').click(function(e) {
   $('#modal-up_submenu').modal('show');
 });
 
-// validasi update submenu
-
-// submenu
 $('#up-submenu').keyup(function() {
   let id      = $('#up-id').val();
   let submenu = $(this).val();
@@ -179,7 +156,6 @@ $('#up-submenu').keyup(function() {
   });
 });
 
-// menu
 $('#up-menu_id').change(function(){
   let menu = $(this).val();
   if(menu.length < 1){
@@ -189,7 +165,6 @@ $('#up-menu_id').change(function(){
   }
 });
 
-// link
 $('#up-link').keyup(function(){
   let link = $(this).val();
   
@@ -200,7 +175,6 @@ $('#up-link').keyup(function(){
   }
 });
 
-// icon 
 $('#up-icon').keyup(function(){
   let icon = $(this).val();
   
@@ -246,18 +220,12 @@ $('#submit-up_submenu').click(function(){
     }
   });
 });
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 $('.btn_delete').click(function(e) {
   e.preventDefault();
   let href = $(this).attr('href');
   
-  // tampilkan konfirmasi
   confirm_delete(href);
 });
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
 });

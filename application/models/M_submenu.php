@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_submenu extends CI_Model
 {
   
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-  // submenu clear
   function get_all() 
   {
     return $this->db->select('submenu.*, menu.menu')
@@ -23,12 +21,7 @@ class M_submenu extends CI_Model
                     ->get()->row_array();
     echo json_encode($submenu);
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-  // tambah submenu
   function create()
   {
     $submenu   = htmlspecialchars($_POST['submenu']);
@@ -59,11 +52,7 @@ class M_submenu extends CI_Model
     $link = htmlspecialchars($_POST['link']);
     echo $this->db->get_where('submenu',['link' => $link])->num_rows();
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   function is_up_submenu()
   {
     $id      = htmlspecialchars($_POST['id']);
@@ -106,20 +95,12 @@ class M_submenu extends CI_Model
       echo 'true';
     }
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   function delete($id)
   {
     $this->db->delete('submenu', ['id' => $id]);
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
 
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   function _pesan($html,$type)
   {
     $data = [
@@ -129,9 +110,4 @@ class M_submenu extends CI_Model
     
     $this->session->set_flashdata($data);
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-  
-  
-  
-  
 }

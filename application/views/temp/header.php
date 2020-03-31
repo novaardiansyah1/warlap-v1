@@ -26,7 +26,7 @@
   <?php endif; ?>
   
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed
+<body class="hold-transition sidebar-collapse layout-navbar-fixed
 layout-footer-fixed">
 <div class="wrapper">
 

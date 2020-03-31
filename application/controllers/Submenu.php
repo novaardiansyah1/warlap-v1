@@ -12,7 +12,6 @@ class Submenu extends CI_Controller
     $this->load->model('M_menu', 'Menu');
   }
   
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   public function index()
   {
     $data = [
@@ -30,11 +29,7 @@ class Submenu extends CI_Controller
     $this->load->view('submenu/modal');
     $this->load->view('temp/footer');
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   
-  
-  
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   public function create() 
   {
     $this->cek_ajax();
@@ -63,11 +58,6 @@ class Submenu extends CI_Controller
     $this->cek_ajax();
     $this->Submenu->is_link();
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   
   public function is_up_submenu()
   {
@@ -100,22 +90,13 @@ class Submenu extends CI_Controller
       $this->Submenu->update();
     }
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
   public function delete($id)
   {
     $this->Submenu->delete($id);
     redirect('submenu');
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/
-
-
-
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
-  // cek request ajax 
+  
   private function cek_ajax($id='', $submenu='')
   {
     if(!isset($_POST['id']) && !isset($_POST['submenu']))
@@ -131,6 +112,5 @@ class Submenu extends CI_Controller
     $this->form_validation->set_rules('icon', 'icon', 
     'required|trim|min_length[8]|max_length[30]');
   }
-/*+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====+++++=====*/  
   
 }
