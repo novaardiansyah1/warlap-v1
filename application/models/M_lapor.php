@@ -3,6 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_lapor extends CI_Model 
 {
+  
+/*=============================
+  get all data
+  =============================*/
+  function get_all()
+  {
+    $this->db->where('status', 'konfirmasi');
+    return $this->db->get('laporan')->result();
+  }
+  
   function get_nums()
   {
     $user = get_user();
