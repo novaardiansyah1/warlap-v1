@@ -33,5 +33,5 @@ config milik kalian masing-masing jika ingin menggunakan repo ini.
 http://warlap.rf.gd/
 
 # Status
-saat ini masih dalam proses pengerjaan!
+- pengembangan
 
